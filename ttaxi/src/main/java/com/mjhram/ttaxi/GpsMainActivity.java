@@ -330,10 +330,10 @@ public class GpsMainActivity extends GenericViewFragment
 
     private void loadPresetProperties() {
 
-        //Either look for /<appfolder>/gpslogger.properties or /sdcard/gpslogger.properties
-        File file =  new File(Utilities.GetDefaultStorageFolder(getApplicationContext()) + "/gpslogger.properties");
+        //Either look for /<appfolder>/ttaxipassenger.properties or /sdcard/ttaxipassenger.properties
+        File file =  new File(Utilities.GetDefaultStorageFolder(getApplicationContext()) + "/ttaxipassenger.properties");
         if(!file.exists()){
-            file = new File(Environment.getExternalStorageDirectory() + "/gpslogger.properties");
+            file = new File(Environment.getExternalStorageDirectory() + "/ttaxipassenger.properties");
             if(!file.exists()){
                 return;
             }

@@ -92,21 +92,15 @@ public class Faqtivity extends ActionBarActivity {
         List<String> generalTopics = new ArrayList<String>();
         generalTopics.add(getString(R.string.faq_topic_whyisntitaccurate));
         generalTopics.add(getString(R.string.faq_topic_howtoremovenotification));
-        generalTopics.add(getString(R.string.faq_topic_usemylocaltimezone));
-        generalTopics.add(getString(R.string.faq_topic_imperial));
         generalTopics.add(getString(R.string.faq_topic_whydoesfixtakelongtime));
 
 
         List<String> preferencesAndFiltersTopics = new ArrayList<String>();
         preferencesAndFiltersTopics.add(getString(R.string.faq_topic_whatvariousfiltersmean));
-        preferencesAndFiltersTopics.add(getString(R.string.faq_topic_whereisthefilelogged));
-        preferencesAndFiltersTopics.add(getString(R.string.faq_topic_howtogetthefile));
         preferencesAndFiltersTopics.add(getString(R.string.faq_topic_loadingpresets));
 
 
         List<String> advancedTopics = new ArrayList<String>();
-        advancedTopics.add(getString(R.string.faq_topic_thirdpartyintegration));
-        advancedTopics.add(getString(R.string.faq_topic_taskerintegration));
         advancedTopics.add(getString(R.string.faq_topic_howgpsworks));
 
 

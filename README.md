@@ -7,7 +7,7 @@ The project was developed based on multiple opensource projects:<br />
 2. Login/Register based on tutorial from Ravi Tamada
 <br /><br />
 **Project Dependencies:**<br />
-- afollestad:material-dialogs<br />
+- afollestad:material-dialogs <br />
 - heinrichreimersoftware.materialdrawer<br />
 - birbit:android-priority-jobqueue<br />
 - greenrobot:eventbus<br />

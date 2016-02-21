@@ -17,5 +17,11 @@ The project was developed based on multiple opensource projects:<br />
 The project was build using latest Android Studio 2.0 Beta 5.<br />
 The project is still **under work/modificaiton**  
 
+**Requirements:**<br />
+
+- Google Maps API Key should be added as String:<br />
+<pre>&#9;&lt;string name="googleMapsApiKey">Put API_KEY&lt;/string&gt;</pre>
+- Fabric  API Key should be added as String:<br />
+<pre>&#9;&lt;string name="fabricApiKey">Put API_KEY&lt;/string&gt;</pre>
 
 

@@ -85,7 +85,7 @@ public class RegisterActivity extends Activity {
 
                 } else {
                 Toast.makeText(getApplicationContext(),
-                    "Please enter your details!", Toast.LENGTH_LONG)
+                    getString(R.string.loginMsgEnterDetails), Toast.LENGTH_LONG)
                     .show();
                 }
             }
@@ -111,7 +111,7 @@ public class RegisterActivity extends Activity {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
-        pDialog.setMessage("Registering ...");
+        pDialog.setMessage(getString(R.string.loginDlgMsgRegistering));
         showDialog();
 
         StringRequest strReq = new StringRequest(Method.POST,

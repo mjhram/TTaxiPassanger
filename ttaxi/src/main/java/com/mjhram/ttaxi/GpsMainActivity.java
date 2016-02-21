@@ -36,7 +36,6 @@ import android.os.IBinder;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -105,7 +104,7 @@ import de.greenrobot.event.EventBus;
 public class GpsMainActivity extends GenericViewFragment
         implements
         //Toolbar.OnMenuItemClickListener,
-        ActionBar.OnNavigationListener,
+        //ActionBar.OnNavigationListener,
         GoogleApiClient.ConnectionCallbacks,
         LocationListener,
         OnMapReadyCallback
@@ -503,7 +502,7 @@ public class GpsMainActivity extends GenericViewFragment
         }
     }
 
-    private int GetUserSelectedNavigationItem(){
+    /*private int GetUserSelectedNavigationItem(){
         return AppSettings.getUserSelectedNavigationItem();
     }
 
@@ -522,7 +521,7 @@ public class GpsMainActivity extends GenericViewFragment
 
         return true;
     }
-
+*/
     /**
      * Provides a connection to the GPS Logging Service
      */
@@ -770,7 +769,7 @@ public class GpsMainActivity extends GenericViewFragment
     @EventBusHook
     public void onEventMainThread(ServiceEvents.ErrorConnectionEvent erroConnectionEvent){
         tracer.debug("error getting state");
-        btnPickDrop.setText("Re-Connect");
+        btnPickDrop.setText(getResources().getString(R.string.gpsMainBtnReconnect));
         btnPickDrop.setVisibility(View.VISIBLE);
         driverInfoLayout.setVisibility(View.GONE);
         pickdropState = 20;
@@ -820,7 +819,7 @@ public class GpsMainActivity extends GenericViewFragment
     @EventBusHook
     public void onEventMainThread(ServiceEvents.CancelTRequests cancelTRequests){
         tracer.debug("cancel TRequest");
-        Utilities.MsgBox("Request Canceled", cancelTRequests.msg, this);
+        Utilities.MsgBox(getResources().getString(R.string.gpsMainMsgRequestCanceled), cancelTRequests.msg, this);
         cancelTRequest(Constants.TRequest_Canceled);
         /*if(pickdropState != 0) {
             pickdropState=0;
@@ -1101,7 +1100,7 @@ public class GpsMainActivity extends GenericViewFragment
                 long minutes = (millisUntilFinished) / (60*1000);
                 long seconds = (millisUntilFinished/1000) % 60;
                 String timeString = String.format("%02d:%02d", minutes, seconds);
-                btnPickDrop.setText("Cancel:"+timeString);
+                btnPickDrop.setText(getString(R.string.gpsMainBtnCancel)+timeString);
             }
             public void onFinish() {
                 //cancel the T-request
@@ -1150,7 +1149,7 @@ public class GpsMainActivity extends GenericViewFragment
                     });*/
                 }
 
-                btnPickDrop.setText("Drop to...");
+                btnPickDrop.setText(getString(R.string.gpsMainBtnDropto));
 
                 break;
             case 1:
@@ -1168,15 +1167,15 @@ public class GpsMainActivity extends GenericViewFragment
                         toMarker.setPosition(currentPosition);
                     }
                 }
-                btnPickDrop.setText("Confirm...");
+                btnPickDrop.setText(getString(R.string.gpsMainBtnConfirm));
                 break;
             case 2:
                 //show dialog for additional info:
                 boolean wrapInScrollView = true;
                 MaterialDialog dialog = new MaterialDialog.Builder(this)
-                        .title("Fee and Additional Notes")
+                        .title(getString(R.string.gpsMainFeeDlgTitle))
                         .customView(R.layout.dlg_fee, wrapInScrollView)
-                        .positiveText("Confirm")
+                        .positiveText(getString(R.string.gpsMainFeeDlgPositive))
                         //.negativeText("Cancel")
                         .callback(new MaterialDialog.ButtonCallback() {
 
@@ -1228,7 +1227,7 @@ public class GpsMainActivity extends GenericViewFragment
 
     void cancelTRequest(String tReqState) {
         pickdropState=0;
-        btnPickDrop.setText("Pick From...");
+        btnPickDrop.setText(getString(R.string.gpsMainBtnPickFrom));
         UploadClass upload = new UploadClass(GpsMainActivity.this);
         if(AppSettings.requestId != -1) {
             upload.setTRequestState(Integer.toString(AppSettings.requestId), tReqState);
@@ -1252,7 +1251,7 @@ public class GpsMainActivity extends GenericViewFragment
     private void updateRegId(final String userId, final String regId) {
         String tag_string_req = "regId_update";
 
-        pDialog.setMessage("Updating ...");
+        pDialog.setMessage(getString(R.string.gpsMainDlgMsgUpdating));
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,

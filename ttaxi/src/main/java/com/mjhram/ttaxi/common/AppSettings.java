@@ -32,7 +32,6 @@ import com.mjhram.ttaxi.gcm_client.Constants;
 import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.config.Configuration;
 
-import io.fabric.sdk.android.Fabric;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
@@ -43,6 +42,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import de.greenrobot.event.EventBus;
+import io.fabric.sdk.android.Fabric;
 
 public class AppSettings extends Application {
     private static JobManager jobManager;
@@ -252,19 +252,19 @@ public class AppSettings extends Application {
 
     /**
      * Which navigation item the user selected
-     */
+
     public static int getUserSelectedNavigationItem() {
         return prefs.getInt("SPINNER_SELECTED_POSITION", 0);
     }
-
+    */
     /**
      * Sets which navigation item the user selected
-     */
+
     public static void setUserSelectedNavigationItem(int position) {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("SPINNER_SELECTED_POSITION", position);
         editor.apply();
-    }
+    }*/
 
     /**
      * Whether to hide the buttons when displaying the app notification

@@ -118,7 +118,7 @@ public class LoginActivity extends Activity {
                 //check for regId
                 if(AppSettings.regId==null) {
                     Toast.makeText(getApplicationContext(),
-                            "App is not Registered Error", Toast.LENGTH_LONG)
+                            getString(R.string.loginMsgNotRegistered), Toast.LENGTH_LONG)
                             .show();
                     finish();
                 }
@@ -129,7 +129,7 @@ public class LoginActivity extends Activity {
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
-                            "Please enter the credentials!", Toast.LENGTH_LONG)
+                            getString(R.string.loginMsgEnterCredentials), Toast.LENGTH_LONG)
                             .show();
                 }
             }
@@ -166,7 +166,7 @@ public class LoginActivity extends Activity {
      // Tag used to cancel the request
      String tag_string_req = "req_login";
 
-     pDialog.setMessage("Logging in ...");
+     pDialog.setMessage(getString(R.string.loginDlgMsgUpdating));
      showDialog();
 
      StringRequest strReq = new StringRequest(Method.POST,

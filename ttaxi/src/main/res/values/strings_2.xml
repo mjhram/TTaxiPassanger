@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="driverLabel">Driver:</string>
+    <string name="infoLabel">Info:</string>
+    <string name="btnPickFrom">Pick From...</string>
+
+    <string name="dlgFee">Fee</string>
+    <string name="dlgFeeEx">Ex. 5,000 IQD</string>
+    <string name="dlgNoOfPassengers">No. of Passangers</string>
+    <string name="dlgAdditionalCarry">Additional Carry-on or Notes</string>
+    <string name="dlgAdditionalCarryEx">Ex. 3 medium bags</string>
+
+    <string name="gpsMainBtnReconnect">Re-Connect</string>
+    <string name="gpsMainMsgRequestCanceled">Request Canceled</string>
+    <string name="gpsMainBtnCancel">Cancel:</string>
+    <string name="gpsMainBtnDropto">Drop to...</string>
+    <string name="gpsMainBtnConfirm">Confirm...</string>
+    <string name="gpsMainBtnPickFrom">Pick From...</string>
+
+    <string name="gpsMainFeeDlgTitle">Fee and Additional Notes</string>
+    <string name="gpsMainFeeDlgPositive">Confirm</string>
+
+    <string name="gpsMainDlgMsgUpdating">Updating ...</string>
+
+    <!-- login_register/LoginActivity -->
+    <string name="loginMsgNotRegistered">App is not Registered Error</string>
+    <string name="loginMsgEnterCredentials">Please enter the credentials!</string>
+    <string name="loginDlgMsgUpdating">Logging in ...</string>
+    <!-- login_register/RegisterActivity -->
+    <string name="loginMsgEnterDetails">Please enter your details!</string>
+    <string name="loginDlgMsgRegistering">Registering ...</string>
+
+    <!-- helper/UploadClass -->
+    <string name="uploadDlgMsgUpdating">Updating State ...</string>
+    <string name="uploadDlgMsgUpdatingRqst">Updating Request State...</string>
+    <string name="uploadDlgMsgUploadingRqst">Uploading Request ...</string>
+    <string name="uploadDriverInfo">Info:\n</string>
+
+    <!-- gcm_client/MyGcmListenerService -->
+    <string name="gcmClientReqState">Request State:</string>
+    <string name="gcmClientGcmMsg">GCM Message</string>
+
+</resources>

@@ -108,31 +108,6 @@
         </activity>
 
 
-
-        <activity
-            android:name="com.mjhram.ttaxi.shortcuts.ShortcutCreate"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.mjhram.ttaxi.shortcuts.ShortcutStart"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.mjhram.ttaxi.shortcuts.ShortcutStop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
-        </activity>
-
         <service
             android:name="com.mjhram.ttaxi.gcm_client.MyGcmListenerService"
             android:exported="false" >
@@ -176,7 +151,7 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="@string/fabricApiKey" />
+            android:value="67e5e650c7c58856fafeae0a91405d1791287654"/>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
 import com.mjhram.ttaxi.common.DriverInfo;
 import com.mjhram.ttaxi.common.TRequestObj;
@@ -44,7 +45,7 @@ public class UploadClass {
         // Tag used to cancel the request
         String tag_string_req = "updatePassangerState";
 
-        pDialog.setMessage("Updating State ...");
+        pDialog.setMessage(cx.getString(R.string.uploadDlgMsgUpdating));
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
@@ -81,7 +82,7 @@ public class UploadClass {
                             treq.time = c.getString(Constants.RequestsTime);
                             treq.secondsToNow = c.getString(Constants.RequestsSecondsToNow);
                             treq.driverName = c.getString(Constants.RequestsDriverName);
-                            treq.driverInfo = "Info:\n" + c.getString(Constants.RequestsDriverEmail);
+                            treq.driverInfo = cx.getString(R.string.uploadDriverInfo) + c.getString(Constants.RequestsDriverEmail);
                             treq.suggestedFee = c.getString(Constants.RequestsSuggestedFee);
                             treq.noOfPassangers = c.getString(Constants.RequestsNoOfPassangers);
                             treq.additionalNotes = c.getString(Constants.RequestsAdditionalNotes);
@@ -135,7 +136,7 @@ public class UploadClass {
         // Tag used to cancel the request
         String tag_string_req = "setTRequestState";
 
-        pDialog.setMessage("Updating Request State...");
+        pDialog.setMessage(cx.getString(R.string.uploadDlgMsgUpdatingRqst));
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
@@ -195,7 +196,7 @@ public class UploadClass {
         // Tag used to cancel the request
         String tag_string_req = "addTRequest";
 
-        pDialog.setMessage("Uploading Request ...");
+        pDialog.setMessage(cx.getString(R.string.uploadDlgMsgUploadingRqst));
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,

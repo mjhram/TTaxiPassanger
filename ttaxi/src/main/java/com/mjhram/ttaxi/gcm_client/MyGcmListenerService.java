@@ -78,7 +78,7 @@ public class MyGcmListenerService extends GcmListenerService {
                 } else if(tag.equalsIgnoreCase("treqState")) {
                     String state = msgObj.getString("data");//Integer.parseInt(message);
                     EventBus.getDefault().post(new ServiceEvents.TRequestUpdated(state));
-                    message = "Request State:" + state;
+                    message = getString(R.string.gcmClientReqState) + state;
                     /*Intent intent = new Intent(Constants.UPDATE_REQ);
                     //put whatever data you want to send, if any
                     intent.putExtra("drvId", drvId);
@@ -117,7 +117,7 @@ public class MyGcmListenerService extends GcmListenerService {
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.circle_green)
-                .setContentTitle("GCM Message")
+                .setContentTitle(getString(R.string.gcmClientGcmMsg))
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)

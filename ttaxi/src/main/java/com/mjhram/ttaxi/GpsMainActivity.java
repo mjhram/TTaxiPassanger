@@ -422,13 +422,13 @@ public class GpsMainActivity extends GenericViewFragment
         drawerLayout.setDrawerListener(drawerToggle);
         drawerLayout.closeDrawer(drawer);
 
-        drawer.addDivider();
+        /*drawer.addDivider();
         drawer.addItem(new DrawerItem()
                         .setId(1000)
                         .setImage(getResources().getDrawable(R.drawable.settings))
                         .setTextPrimary(getString(R.string.pref_general_title))
                         .setTextSecondary(getString(R.string.pref_general_summary))
-        );
+        );*/
 
         drawer.addItem(new DrawerItem()
                         .setId(2)
@@ -462,10 +462,10 @@ public class GpsMainActivity extends GenericViewFragment
                 drawerLayout.closeDrawer(drawer);
 
                 switch((int)id){
-                    case 1000:
+                    /*case 1000:
                         LaunchPreferenceScreen(MainPreferenceActivity.PreferenceConstants.GENERAL);
                         break;
-
+                    */
                     case 2:
                         LaunchPreferenceScreen(MainPreferenceActivity.PreferenceConstants.PERFORMANCE);
                         break;

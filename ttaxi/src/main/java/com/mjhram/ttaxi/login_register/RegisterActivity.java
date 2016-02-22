@@ -38,6 +38,7 @@ public class RegisterActivity extends Activity {
     private Button btnLinkToLogin;
     private EditText inputFullName;
     private EditText inputEmail;
+    private EditText inputPhone;
     private EditText inputPassword;
     private ProgressDialog pDialog;
     //private SessionManager session;
@@ -49,6 +50,7 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
         inputFullName = (EditText) findViewById(R.id.name);
         inputEmail = (EditText) findViewById(R.id.email);
+        inputPhone = (EditText) findViewById(R.id.user_phone);
         inputPassword = (EditText) findViewById(R.id.password);
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
@@ -75,13 +77,14 @@ public class RegisterActivity extends Activity {
             public void onClick(View view) {
                 String name = inputFullName.getText().toString();
                 String email = inputEmail.getText().toString();
+                String userPhone = inputPhone.getText().toString();
                 String password = inputPassword.getText().toString();
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    registerUser(name, email, password);
+                    registerUser(name, email, userPhone, password);
                     AppSettings.setEmail(email);
                     AppSettings.setName(name);
-
+                    AppSettings.setPhone(userPhone);
 
                 } else {
                 Toast.makeText(getApplicationContext(),
@@ -106,7 +109,7 @@ public class RegisterActivity extends Activity {
     * Function to store user in MySQL database will post params(tag, name,
     * email, password) to register url
     * */
-    private void registerUser(final String name, final String email,
+    private void registerUser(final String name, final String email, final String userPhone,
                         final String password) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
@@ -133,10 +136,11 @@ public class RegisterActivity extends Activity {
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
                         String email = user.getString("email");
+                        String userPhone = user.getString("phone");
                         String created_at = user.getString("created_at");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at);
+                        db.addUser(name, email, userPhone, uid, created_at);
 
                         // Launch login activity
                         Intent intent = new Intent(
@@ -173,6 +177,7 @@ public class RegisterActivity extends Activity {
                     params.put("tag", "register");
                     params.put("name", name);
                     params.put("email", email);
+                    params.put("phone", userPhone);
                     params.put("password", password);
                     params.put("regId", AppSettings.regId);
                     params.put("type", "Pas");

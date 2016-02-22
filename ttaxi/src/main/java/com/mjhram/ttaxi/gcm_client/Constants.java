@@ -21,7 +21,8 @@ public interface Constants {
 
     public static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     public static final String KEY_NAME = "name";
-    public static final String KEY_EMAIL = "key_email";
+	public static final String KEY_PHONE = "userPhone";
+	public static final String KEY_EMAIL = "key_email";
     public static final String KEY_UID = "key_uid";
 	public static final String KEY_REGID = "key_RegId";
 	public static final String SENT_TOKEN_TO_SERVER = "sentTokenToServer";

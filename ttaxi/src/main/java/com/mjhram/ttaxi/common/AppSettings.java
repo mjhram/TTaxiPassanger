@@ -109,6 +109,12 @@ public class AppSettings extends Application {
         editor.commit();
     }
 
+    public static void setPhone(String phone){
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(Constants.KEY_PHONE, phone);
+        editor.commit();
+    }
+
     public static String getName(){
         String tmp = prefs.getString(Constants.KEY_NAME, "");
         return tmp;

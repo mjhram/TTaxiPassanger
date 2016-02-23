@@ -46,6 +46,7 @@ public interface Constants {
     public static String RequestsSecondsToNow = "secondsToNow";
     public static String RequestsDriverName = "driverName";
     public static String RequestsDriverEmail = "driverEmail";
+	public static String RequestsDriverPhone = "driverPhone";
 	public static String RequestsSuggestedFee = "suggestedFee";
 	public static String RequestsNoOfPassangers = "noOfPassangers";
 	public static String RequestsAdditionalNotes = "additionalNotes";

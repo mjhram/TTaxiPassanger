@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.res.Configuration;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -127,6 +128,8 @@ public class GpsMainActivity extends GenericViewFragment
     private RelativeLayout driverInfoLayout;
     private TextView txtDriverName;
     private TextView txtDriverInfo;
+    private TextView btnDriverPhone;
+
     public String suggestedFee, noOfPassangers, additionalNotes;
 
     @Override
@@ -146,7 +149,15 @@ public class GpsMainActivity extends GenericViewFragment
         driverInfoLayout.setVisibility(View.GONE);
         txtDriverName = (TextView) findViewById(R.id.textViewDriverName);
         txtDriverInfo = (TextView) findViewById(R.id.textViewDriverInfo);
-
+        btnDriverPhone = (Button) findViewById(R.id.btnDriverPhone);
+        btnDriverPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri number = Uri.parse("tel:"+btnDriverPhone.getText());
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+                startActivity(callIntent);
+            }
+        });
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -698,6 +709,7 @@ public class GpsMainActivity extends GenericViewFragment
         driverInfoLayout.setVisibility(View.VISIBLE);
         txtDriverName.setText(tRequestObj.driverName);
         txtDriverInfo.setText(tRequestObj.driverInfo);
+        btnDriverPhone.setText(tRequestObj.driverPhone);
         //driver not assigned yet & 15min elapsed => neglect it
         if(Integer.parseInt(tRequestObj.driverId) == -1) {
             int remainingSeconds = 900 - Integer.parseInt(tRequestObj.secondsToNow);

@@ -6,6 +6,8 @@
     >
     <permission android:name="com.mjhram.ttaxi.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="com.mjhram.ttaxi.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.SEND" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />

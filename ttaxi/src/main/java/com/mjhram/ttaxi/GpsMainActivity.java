@@ -35,6 +35,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -101,6 +102,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import de.greenrobot.event.EventBus;
+
 
 public class GpsMainActivity extends GenericViewFragment
         implements
@@ -448,10 +450,6 @@ public class GpsMainActivity extends GenericViewFragment
         );
 
 
-        drawer.addDivider();
-
-
-
 
         drawer.addItem(new DrawerItem()
                         .setId(11)
@@ -459,11 +457,19 @@ public class GpsMainActivity extends GenericViewFragment
                         .setTextPrimary(getString(R.string.menu_faq))
         );
 
-        drawer.addItem(new DrawerItem()
-                        .setId(12)
-                        .setImage(getResources().getDrawable(R.drawable.exit))
-                        .setTextPrimary(getString(R.string.menu_exit)));
+        drawer.addDivider();
 
+        drawer.addItem(new DrawerItem()
+                        .setId(13)
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.about))
+                        .setTextPrimary(getString(R.string.menu_about)));
+
+        drawer.addDivider();
+
+        drawer.addItem(new DrawerItem()
+                .setId(12)
+                .setImage(getResources().getDrawable(R.drawable.exit))
+                .setTextPrimary(getString(R.string.menu_exit)));
 
         drawer.setOnItemClickListener(new DrawerItem.OnItemClickListener() {
             @Override
@@ -483,6 +489,13 @@ public class GpsMainActivity extends GenericViewFragment
                     case 11:
                         Intent faqtivity = new Intent(getApplicationContext(), Faqtivity.class);
                         startActivity(faqtivity);
+                        break;
+                    case 13://about
+                        new MaterialDialog.Builder(GpsMainActivity.this)
+                                .title(R.string.menu_about)
+                                .content(getString(R.string.appAbout)+BuildConfig.VERSION_NAME)
+                                .positiveText(R.string.ok)
+                                .show();
                         break;
                     case 12:
                         EventBus.getDefault().post(new CommandEvents.RequestStartStop(false));

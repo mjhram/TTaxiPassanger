@@ -40,4 +40,7 @@
     <string name="gcmClientReqState">Request State:</string>
     <string name="gcmClientGcmMsg">GCM Message</string>
 
+
+    <string name="appAbout">TTaxiPassenger Version: </string>
+
 </resources>

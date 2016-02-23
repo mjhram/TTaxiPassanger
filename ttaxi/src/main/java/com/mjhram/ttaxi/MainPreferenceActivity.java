@@ -25,7 +25,6 @@ import android.view.MenuItem;
 
 import com.mjhram.ttaxi.common.PreferenceValidationFragment;
 import com.mjhram.ttaxi.common.Utilities;
-import com.mjhram.ttaxi.settings.GeneralSettingsFragment;
 import com.mjhram.ttaxi.settings.PerformanceSettingsFragment;
 
 import org.slf4j.LoggerFactory;
@@ -65,11 +64,11 @@ public class MainPreferenceActivity extends ActionBarActivity {
         }*/
 
         switch(whichFragment){
-            case PreferenceConstants.GENERAL:
+            /*case PreferenceConstants.GENERAL:
                 setTitle(R.string.settings_screen_name);
                 preferenceFragment = new GeneralSettingsFragment();
                 break;
-            /*case PreferenceConstants.LOGGING:
+            case PreferenceConstants.LOGGING:
                 setTitle(R.string.pref_logging_title);
                 preferenceFragment = new LoggingSettingsFragment();
                 break;*/
@@ -151,7 +150,7 @@ public class MainPreferenceActivity extends ActionBarActivity {
     }
 
     public static class PreferenceConstants{
-        public static final String GENERAL = "GeneralSettingsFragment";
+        //public static final String GENERAL = "GeneralSettingsFragment";
         //public static final String LOGGING = "LoggingSettingsFragment";
         public static final String PERFORMANCE = "PerformanceSettingsFragment";
         /*public static final String UPLOAD = "UploadSettingsFragment";

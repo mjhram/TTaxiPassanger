@@ -9,8 +9,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PerformanceSettingsFragment  extends PreferenceFragment implements Preference.OnPreferenceClickListener {
 

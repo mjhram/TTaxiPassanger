@@ -55,5 +55,17 @@
         <item>@string/listeners_passive</item>
     </string-array>
 
+    <string-array name="languages">
+        <item>@string/str_default</item>
+        <item>English</item>
+        <item>عربي</item>
+    </string-array>
+
+    <string-array name="languages_code">
+        <item></item>
+        <item>en</item>
+        <item>ar</item>
+    </string-array>
+
 
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:key="ttaxiPassenger_preferences">
+
+    <Preference
+        android:key="language"
+        android:summary="@string/pref_language_summary"
+        android:title="@string/pref_language_title" />
+    <!-- com.mjhram.ttaxi.views.component.CustomSwitchPreference
+        android:title="@string/startonbootup_title"
+        android:summary="@string/startonbootup_summary"
+        android:key="startonbootup"/>
+
+    <Preference android:key="about_version_info"></Preference -->
+
+
+
+</PreferenceScreen>

@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
@@ -57,6 +58,8 @@ public class AppSettings extends Application {
 
      public static boolean shouldUploadRegId = false;
     public static boolean online = false;
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -70,7 +73,25 @@ public class AppSettings extends Application {
                 .build();
         jobManager = new JobManager(this, config);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String lang = getChosenLanguage();
+        changeLang(getBaseContext(), lang);
     }
+
+    private static void changeLang(Context cx, String lang) {
+        Locale locale = null;
+        android.content.res.Configuration config = cx.getResources().getConfiguration();
+        if (!"".equals(lang) && !config.locale.getLanguage().equals(lang)) {
+
+            setChosenLanguage(lang);
+
+            locale = new Locale(lang);
+            Locale.setDefault(locale);
+            android.content.res.Configuration conf = new android.content.res.Configuration(config);
+            conf.locale = locale;
+            cx.getResources().updateConfiguration(conf, cx.getResources().getDisplayMetrics());
+        }
+    }
+
 
     public static void setLogin(boolean isLoggedIn, String name, String email, String uid) {
         SharedPreferences.Editor editor = prefs.edit();
@@ -341,6 +362,18 @@ public class AppSettings extends Application {
     public static void setCustomLoggingUrl(String customLoggingUrl) {
         prefs.edit().putString("log_customurl_url", customLoggingUrl).apply();
     }
+
+    public static void setChosenLanguage(String chosenLanguage) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("language", chosenLanguage);
+        editor.apply();
+    }
+
+    public static String getChosenLanguage() {
+        return prefs.getString("language", "");
+    }
+
+
 
     /**
      * Whether to log to OpenGTS.  See their <a href="http://opengts.sourceforge.net/OpenGTS_Config.pdf">installation guide</a>

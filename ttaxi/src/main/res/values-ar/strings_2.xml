@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_language_title">اللغة</string>
+    <string name="pref_language_summary">اختيار لغة العرض</string>
+
+    <string name="driverLabel">السائق:</string>
+    <string name="infoLabel">معلومات:</string>
+    <string name="btnPickFrom">اركب من...</string>
+
+    <string name="dlgFee">الاجرة</string>
+    <string name="dlgFeeEx">مثلا: 5,000 دينار</string>
+    <string name="dlgNoOfPassengers">عدد الركاب</string>
+    <string name="dlgAdditionalCarry">حمولة اوملاحضات اضافية</string>
+    <string name="dlgAdditionalCarryEx">مثلا: 3 حقائب متوسطة الحجم</string>
+
+    <string name="gpsMainBtnReconnect">اعادة ربط</string>
+    <string name="gpsMainMsgRequestCanceled">تم الغاء الطلب</string>
+    <string name="gpsMainBtnCancel">الغاء:</string>
+    <string name="gpsMainBtnDropto">الوصول الى</string>
+    <string name="gpsMainBtnConfirm">تأكيد...</string>
+    <string name="gpsMainBtnPickFrom">اركب من...</string>
+    <string name="gpsMainBtnPickedUp">الراكب صعد</string>
+    <string name="gpsMainBtnDone">تم</string>
+    <string name="gpsMainBtnAccept">موافق</string>
+
+    <string name="gpsMainFeeDlgTitle">الاجرة وملاحضات اخرى</string>
+    <string name="gpsMainFeeDlgPositive">تأكيد</string>
+
+    <string name="gpsMainDlgMsgUpdating">تحديث...</string>
+
+    <!-- login_register/LoginActivity -->
+    <string name="loginMsgNotRegistered">البرنامج غير مسجل</string>
+    <string name="loginMsgEnterCredentials">الرجاء ادخال بيانات الدخول </string>
+    <string name="loginDlgMsgUpdating">الولوج الى البرنامج</string>
+    <!-- login_register/RegisterActivity -->
+    <string name="loginMsgEnterDetails">الرجاء ادخال التفاصيل</string>
+    <string name="loginDlgMsgRegistering">تسجيل...</string>
+
+    <!-- helper/UploadClass -->
+    <string name="uploadDlgMsgUpdating">تحديث الحالة...</string>
+    <string name="uploadDlgMsgUpdatingRqst">تحديث حالة الطلب...</string>
+    <string name="uploadDlgMsgUploadingRqst">رفع الطلب...</string>
+    <string name="uploadDlgMsgUpdatingRqsts">تحديث الطلبات... </string>
+    <string name="uploadDriverInfo">المعلومات:\n</string>
+
+    <!-- gcm_client/MyGcmListenerService -->
+    <string name="gcmClientReqState">حالة الطلب:</string>
+    <string name="gcmClientGcmMsg"></string>
+
+    <string name="appAbout">TTaxiDriver الاصدار:</string>
+    <string name="str_default">افتراضي</string>
+</resources>

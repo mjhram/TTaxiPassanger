@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="pref_language_title">Language</string>
+    <string name="pref_language_summary">Set display language</string>
+
     <string name="driverLabel">Driver:</string>
     <string name="infoLabel">Info:</string>
     <string name="btnPickFrom">Pick From...</string>

@@ -21,7 +21,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -43,7 +43,7 @@ import de.greenrobot.event.EventBus;
  * Common class for communicating with the parent for the
  * GpsViewCallbacks
  */
-public abstract class GenericViewFragment extends ActionBarActivity {
+public abstract class GenericViewFragment extends AppCompatActivity /*ActionBarActivity*/ {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -19,7 +19,7 @@
 package com.mjhram.ttaxi.Faq;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ExpandableListView;
 
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Faqtivity extends ActionBarActivity {
+public class Faqtivity extends AppCompatActivity /*ActionBarActivity*/ {
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;

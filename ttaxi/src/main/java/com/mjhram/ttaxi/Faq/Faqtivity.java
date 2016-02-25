@@ -50,7 +50,7 @@ public class Faqtivity extends ActionBarActivity {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+            setTitle(R.string.faq_screen_title);
         }
         catch(Exception ex){
             //http://stackoverflow.com/questions/26657348/appcompat-v7-v21-0-0-causing-crash-on-samsung-devices-with-android-v4-2-2

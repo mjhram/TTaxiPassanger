@@ -105,6 +105,7 @@ public class GeneralSettingsFragment extends PreferenceFragment implements Prefe
                         public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
                         //public boolean onSelection(MaterialDialog materialDialog, Integer[] integers, CharSequence[] charSequences) {
                             String[] languageArray = getResources().getStringArray(R.array.languages_code);
+                            AppSettings.changeLang(GeneralSettingsFragment.this.getActivity(), languageArray[which]);
                             AppSettings.setChosenLanguage(languageArray[which]);
                             return true;
                         }

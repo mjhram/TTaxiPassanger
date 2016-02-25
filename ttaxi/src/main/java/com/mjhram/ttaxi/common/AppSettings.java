@@ -59,6 +59,11 @@ public class AppSettings extends Application {
      public static boolean shouldUploadRegId = false;
     public static boolean online = false;
 
+    @Override
+    public void onConfigurationChanged(android.content.res.Configuration newConfig)
+    {
+        super.onConfigurationChanged(newConfig);
+    }
 
     @Override
     public void onCreate() {
@@ -77,7 +82,7 @@ public class AppSettings extends Application {
         changeLang(getBaseContext(), lang);
     }
 
-    private static void changeLang(Context cx, String lang) {
+    public static void changeLang(Context cx, String lang) {
         Locale locale = null;
         android.content.res.Configuration config = cx.getResources().getConfiguration();
         if (!"".equals(lang) && !config.locale.getLanguage().equals(lang)) {

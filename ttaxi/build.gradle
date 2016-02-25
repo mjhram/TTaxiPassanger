@@ -28,6 +28,13 @@ repositories {
 
 android {
     signingConfigs {
+        release_config {
+            keyAlias 'mjhram'
+            keyPassword '123456'
+            storeFile file('C:/Downloads/Android/keystore/keystore')
+            storePassword '123456'
+        }
+
         config {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
@@ -35,6 +42,8 @@ android {
             storePassword 'android'
         }
     }
+
+
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
     defaultConfig {
@@ -56,8 +65,9 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release_config
         }
         debug {
             signingConfig signingConfigs.config
@@ -123,7 +133,11 @@ dependencies {
     compile 'com.android.support:support-v4:22.+'
     //compile 'com.google.android.gms:play-services-base:7.5.0'
     //compile 'com.google.android.gms:play-services-location:7.5.0'
-    compile 'com.google.android.gms:play-services:8.1.0'
+    //compile 'com.google.android.gms:play-services:8.1.0'
+    compile 'com.google.android.gms:play-services-gcm:8.1.0'
+    compile 'com.google.android.gms:play-services-maps:8.1.0'
+    compile 'com.google.android.gms:play-services-location:8.1.0'
+
     //compile 'com.google.android.gms:play-services-drive:7.5.0'
     //compile 'commons-net:commons-net:2.0' //for 'ftp' upload
     /*compile('org.apache.httpcomponents:httpmime:4.0.3') {

@@ -437,14 +437,14 @@ public class GpsMainActivity extends GenericViewFragment
         //drawer.addDivider();
         drawer.addItem(new DrawerItem()
                         .setId(1000)
-                        .setImage(getResources().getDrawable(R.drawable.settings))
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.settings))
                         .setTextPrimary(getString(R.string.pref_general_title))
                         .setTextSecondary(getString(R.string.pref_general_summary))
         );
 
         drawer.addItem(new DrawerItem()
                         .setId(2)
-                        .setImage(getResources().getDrawable(R.drawable.performance))
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.performance))
                         .setTextPrimary(getString(R.string.pref_performance_title))
                         .setTextSecondary(getString(R.string.pref_performance_summary))
         );
@@ -453,7 +453,7 @@ public class GpsMainActivity extends GenericViewFragment
 
         drawer.addItem(new DrawerItem()
                         .setId(11)
-                        .setImage(getResources().getDrawable(R.drawable.helpfaq))
+                        .setImage(ContextCompat.getDrawable(this, R.drawable.helpfaq))
                         .setTextPrimary(getString(R.string.menu_faq))
         );
 
@@ -468,7 +468,7 @@ public class GpsMainActivity extends GenericViewFragment
 
         drawer.addItem(new DrawerItem()
                 .setId(12)
-                .setImage(getResources().getDrawable(R.drawable.exit))
+                .setImage(ContextCompat.getDrawable(this, R.drawable.exit))
                 .setTextPrimary(getString(R.string.menu_exit)));
 
         drawer.setOnItemClickListener(new DrawerItem.OnItemClickListener() {

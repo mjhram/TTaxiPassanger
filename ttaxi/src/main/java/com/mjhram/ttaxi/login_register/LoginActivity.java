@@ -174,7 +174,7 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
+                Log.d(TAG, "Login Response: " + response);
                 hideDialog();
 
                 try {

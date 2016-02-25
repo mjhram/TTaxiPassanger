@@ -31,7 +31,6 @@ import android.os.BatteryManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.text.Spanned;
-import android.text.format.Time;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
@@ -53,7 +52,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -642,16 +643,20 @@ public class Utilities {
 
     public static String GetFormattedCustomFileName(String baseName) {
 
-        Time t = new Time();
-        t.setToNow();
+        //Time t = new Time();
+        //t.setToNow();
+
+        Calendar calendar = new GregorianCalendar();
+        //Date trialTime = new Date();
+        //calendar.setTime(trialTime);
 
         String finalFileName = baseName;
         finalFileName = finalFileName.replaceAll("(?i)%ser", String.valueOf(Utilities.GetBuildSerial()));
-        finalFileName = finalFileName.replaceAll("(?i)%hour", String.valueOf(t.hour));
-        finalFileName = finalFileName.replaceAll("(?i)%min", String.valueOf(t.minute));
-        finalFileName = finalFileName.replaceAll("(?i)%year", String.valueOf(t.year));
-        finalFileName = finalFileName.replaceAll("(?i)%month", String.valueOf(t.month+1));
-        finalFileName = finalFileName.replaceAll("(?i)%day", String.valueOf(t.monthDay));
+        finalFileName = finalFileName.replaceAll("(?i)%hour", String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)));//String.valueOf(t.hour));
+        finalFileName = finalFileName.replaceAll("(?i)%min", String.valueOf(calendar.get(Calendar.MINUTE)));//String.valueOf(t.minute));
+        finalFileName = finalFileName.replaceAll("(?i)%year", String.valueOf(calendar.get(Calendar.YEAR)/*t.year*/));
+        finalFileName = finalFileName.replaceAll("(?i)%month", String.valueOf(calendar.get(Calendar.MONTH)/*t.month*/+1));
+        finalFileName = finalFileName.replaceAll("(?i)%day", String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)/*t.monthDay*/));
         return finalFileName;
 
     }

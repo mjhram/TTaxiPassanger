@@ -54,15 +54,7 @@ android {
         applicationId 'com.mjhram.ttaxi'
         signingConfig signingConfigs.config
     }
-    //Adding API keys to BuildConfig
-    defaultConfig {
-        //Set these values in ~/.gradle/gradle.properties
-        buildConfigField "String", "OSM_CONSUMER_KEY", "\"" + GPSLOGGER_OSM_CONSUMERKEY + "\""
-        buildConfigField "String", "OSM_CONSUMER_SECRET", "\"" + GPSLOGGER_OSM_CONSUMERSECRET + "\""
-        buildConfigField "String", "DROPBOX_APP_KEY", "\"" + GPSLOGGER_DROPBOX_APPKEY + "\""
-        buildConfigField "String", "DROPBOX_APP_SECRET", "\"" + GPSLOGGER_DROPBOX_APPSECRET + "\""
-        resValue "string", "DROPBOX_DB_SCHEME", "\"db-" + GPSLOGGER_DROPBOX_APPKEY + "\""
-    }
+
     buildTypes {
         release {
             minifyEnabled true

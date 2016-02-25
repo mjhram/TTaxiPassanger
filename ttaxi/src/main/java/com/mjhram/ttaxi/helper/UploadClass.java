@@ -53,7 +53,7 @@ public class UploadClass {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "getPassangerState Response: " + response.toString());
+                Log.d(TAG, "getPassangerState Response: " + response);
                 hideDialog();
 
                 try {
@@ -145,7 +145,7 @@ public class UploadClass {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "updateTReq Response: " + response.toString());
+                Log.d(TAG, "updateTReq Response: " + response);
                 hideDialog();
 
                 try {
@@ -205,7 +205,7 @@ public class UploadClass {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "AddTReq Response: " + response.toString());
+                Log.d(TAG, "AddTReq Response: " + response);
                 hideDialog();
 
                 try {

@@ -1000,7 +1000,7 @@ public class AppSettings extends Application {
 
             SharedPreferences.Editor editor = prefs.edit();
             String value = props.getProperty(key.toString());
-            tracer.info("Setting preset property: " + key.toString() + " to " + value.toString());
+            tracer.info("Setting preset property: " + key.toString() + " to " + value);
 
             if (value.equalsIgnoreCase("true") || value.equalsIgnoreCase("false")) {
                 editor.putBoolean(key.toString(), Boolean.parseBoolean(value));

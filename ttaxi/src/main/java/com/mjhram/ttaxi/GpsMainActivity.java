@@ -713,7 +713,7 @@ public class GpsMainActivity extends GenericViewFragment
         }
         if(toMarker != null) {
             toMarker.remove();
-            fromMarker = null;
+            toMarker = null;
         }
     }
 

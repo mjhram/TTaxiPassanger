@@ -19,9 +19,6 @@
     <string name="gpsMainBtnDropto">الوصول الى</string>
     <string name="gpsMainBtnConfirm">تأكيد...</string>
     <string name="gpsMainBtnPickFrom">اركب من...</string>
-    <string name="gpsMainBtnPickedUp">الراكب صعد</string>
-    <string name="gpsMainBtnDone">تم</string>
-    <string name="gpsMainBtnAccept">موافق</string>
 
     <string name="gpsMainFeeDlgTitle">الاجرة وملاحضات اخرى</string>
     <string name="gpsMainFeeDlgPositive">تأكيد</string>
@@ -40,7 +37,6 @@
     <string name="uploadDlgMsgUpdating">تحديث الحالة...</string>
     <string name="uploadDlgMsgUpdatingRqst">تحديث حالة الطلب...</string>
     <string name="uploadDlgMsgUploadingRqst">رفع الطلب...</string>
-    <string name="uploadDlgMsgUpdatingRqsts">تحديث الطلبات... </string>
     <string name="uploadDriverInfo">المعلومات:\n</string>
 
     <!-- gcm_client/MyGcmListenerService -->

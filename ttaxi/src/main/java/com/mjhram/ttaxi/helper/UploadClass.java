@@ -193,7 +193,8 @@ public class UploadClass {
 
     public void addTRequest(final String passangerId, final String email,
                             final String lat1, final String long1, final String lat2, final String long2,
-                            final String suggestedFee, final String noOfPassangers, final String additionalNotes) {
+                            final String suggestedFee, final String noOfPassangers, final String additionalNotes)
+    {
         // Tag used to cancel the request
         String tag_string_req = "addTRequest";
 

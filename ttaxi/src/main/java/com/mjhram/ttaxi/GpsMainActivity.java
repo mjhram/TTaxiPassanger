@@ -706,6 +706,7 @@ public class GpsMainActivity extends GenericViewFragment
         pickdropState=0;
 
         btnPickDrop.setVisibility(View.VISIBLE);
+        btnPickDrop.setText(getString(R.string.gpsMainBtnPickFrom));
         driverInfoLayout.setVisibility(View.GONE);
         if(fromMarker != null) {
             fromMarker.remove();
@@ -846,6 +847,8 @@ public class GpsMainActivity extends GenericViewFragment
         tracer.debug("cancel TRequest");
         Utilities.MsgBox(getResources().getString(R.string.gpsMainMsgRequestCanceled), cancelTRequests.msg, this);
         cancelTRequest(Constants.TRequest_Canceled);
+        UploadClass uc = new UploadClass(this);
+        uc.getPassangerState(AppSettings.getUid());
         /*if(pickdropState != 0) {
             pickdropState=0;
             btnPickDrop.setText("Pick From...");
@@ -1143,7 +1146,28 @@ public class GpsMainActivity extends GenericViewFragment
         }.start();
     }
 
+    @Override
+    public void onBackPressed() {
+        switch(pickdropState) {
+            case 1:
+                setStateToIdle();
+                break;
+            case 2:
+                pickdropState=1;
+                btnPickDrop.setText(getString(R.string.gpsMainBtnDropto));
+                if(toMarker != null) {
+                    toMarker.remove();
+                    toMarker = null;
+                }
+                break;
+            default:
+                super.onBackPressed();
+                break;
+        }
+    }
+
     public void onPickDropClick(View v) {
+        UploadClass uc;
         switch(pickdropState) {
             case 0:
                 pickdropState = 1;
@@ -1235,7 +1259,7 @@ public class GpsMainActivity extends GenericViewFragment
                 cancelTRequest(Constants.TRequest_Canceled);
                 break;
             case 20://reconnect
-                UploadClass uc = new UploadClass(this);
+                uc = new UploadClass(this);
                 uc.getPassangerState(AppSettings.getUid());
                 break;
 

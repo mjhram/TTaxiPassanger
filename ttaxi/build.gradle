@@ -151,8 +151,8 @@ dependencies {
     //compile 'com.googlecode.json-simple:json-simple:1.1'
     //Logging
     compile 'org.slf4j:slf4j-api:1.7.6'
-    compile 'com.github.tony19:logback-android-classic:1.1.1-2'
-    compile 'com.github.tony19:logback-android-core:1.1.1-2'
+    compile 'com.github.tony19:logback-android-classic:1.1.1-4'
+    compile 'com.github.tony19:logback-android-core:1.1.1-4'
     //Android lollipop/material features including the Toolbar
     compile 'com.android.support:appcompat-v7:22.+'
     //Cardviews

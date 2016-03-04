@@ -846,7 +846,11 @@ public class GpsMainActivity extends GenericViewFragment
     public void onEventMainThread(ServiceEvents.CancelTRequests cancelTRequests){
         tracer.debug("cancel TRequest");
         Utilities.MsgBox(getResources().getString(R.string.gpsMainMsgRequestCanceled), cancelTRequests.msg, this);
-        cancelTRequest(Constants.TRequest_Canceled);
+        //cancelTRequest(Constants.TRequest_Canceled);
+        pickdropState=0;
+        btnPickDrop.setText(getString(R.string.gpsMainBtnPickFrom));
+        countDownTimer.cancel();
+
         UploadClass uc = new UploadClass(this);
         uc.getPassangerState(AppSettings.getUid());
         /*if(pickdropState != 0) {

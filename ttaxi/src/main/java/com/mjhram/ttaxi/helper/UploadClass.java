@@ -219,11 +219,14 @@ public class UploadClass {
                         // Error occurred in registration. Get the error
                         // message
                         String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(cx,
-                                errorMsg, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(cx,
+                                //errorMsg, Toast.LENGTH_LONG).show();
+                        hideDialog();
+                        EventBus.getDefault().post(new ServiceEvents.CancelTRequests(errorMsg));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    hideDialog();
                     EventBus.getDefault().post(new ServiceEvents.CancelTRequests(e.getMessage()));
                 }
             }
@@ -231,8 +234,8 @@ public class UploadClass {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "addRequest Error: " + error.getMessage());
-                Toast.makeText(cx,
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(cx,
+                  //      error.getMessage(), Toast.LENGTH_LONG).show();
                 hideDialog();
                 EventBus.getDefault().post(new ServiceEvents.CancelTRequests(error.getMessage()));
             }

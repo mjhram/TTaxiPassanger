@@ -31,13 +31,13 @@ public class CommandEvents {
 
     /**
      * Set a description for the next point
-     */
+
     public static class Annotate {
         public String annotation;
         public Annotate(String annotation) {
             this.annotation = annotation;
         }
-    }
+    }*/
 
     /**
      * Log once and stop

@@ -79,17 +79,14 @@ import com.heinrichreimersoftware.materialdrawer.structure.DrawerItem;
 import com.mjhram.ttaxi.Faq.Faqtivity;
 import com.mjhram.ttaxi.common.AppSettings;
 import com.mjhram.ttaxi.common.EventBusHook;
-import com.mjhram.ttaxi.common.MyInfo;
 import com.mjhram.ttaxi.common.Session;
 import com.mjhram.ttaxi.common.TRequestObj;
 import com.mjhram.ttaxi.common.Utilities;
 import com.mjhram.ttaxi.common.events.CommandEvents;
 import com.mjhram.ttaxi.common.events.ServiceEvents;
-import com.mjhram.ttaxi.common.events.UploadEvents;
 import com.mjhram.ttaxi.common.slf4j.SessionLogcatAppender;
 import com.mjhram.ttaxi.gcm_client.Constants;
 import com.mjhram.ttaxi.helper.UploadClass;
-import com.mjhram.ttaxi.loggers.FileLoggerFactory;
 import com.mjhram.ttaxi.views.GenericViewFragment;
 
 import org.slf4j.LoggerFactory;
@@ -329,7 +326,7 @@ public class GpsMainActivity extends GenericViewFragment
         return super.onKeyDown(keyCode, event);
     }
 
-    private void WriteToFile(MyInfo info) {
+    /*private void WriteToFile(MyInfo info) {
         Session.setAddNewTrackSegment(false);
         try {
             tracer.debug("Calling file writers");
@@ -338,7 +335,7 @@ public class GpsMainActivity extends GenericViewFragment
         catch(Exception e){
             tracer.error(getString(R.string.could_not_write_to_file), e);
         }
-    }
+    }*/
 
     private void loadPresetProperties() {
 
@@ -565,7 +562,7 @@ public class GpsMainActivity extends GenericViewFragment
 
     /**
      * Starts the service and binds the activity to it.
-     */
+
     private void StartAndBindService() {
         serviceIntent = new Intent(this, GpsLoggingService.class);
         // Start the service in case it isn't already running
@@ -574,7 +571,7 @@ public class GpsMainActivity extends GenericViewFragment
         // Now bind to service
         bindService(serviceIntent, gpsServiceConnection, Context.BIND_AUTO_CREATE);
         Session.setBoundToService(true);
-    }
+    }*/
 
 
     /**
@@ -861,7 +858,7 @@ public class GpsMainActivity extends GenericViewFragment
 
     }
 
-    @EventBusHook
+    /*@EventBusHook
     public void onEventMainThread(UploadEvents.OpenGTS upload){
         tracer.debug("Open GTS Event completed, success: " + upload.success);
         Utilities.HideProgress();
@@ -974,7 +971,7 @@ public class GpsMainActivity extends GenericViewFragment
                 userInvokedUpload = false;
             }
         }
-    }
+    }*/
 
     @Override
     public void onLocationChanged(Location location) {

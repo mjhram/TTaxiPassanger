@@ -19,5 +19,5 @@ package com.mjhram.ttaxi.common;
 
 public interface IMessageBoxCallback {
 
-    public void MessageBoxResult(int which);
+    void MessageBoxResult(int which);
 }

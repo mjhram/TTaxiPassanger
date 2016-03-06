@@ -180,6 +180,8 @@
 
     <string name="enabledisablegps_title">Enable/Disable GPS</string>
     <string name="enabledisablegps_summary">Go to the phone settings to enable or disable the providers.</string>
+    <string name="startonbootup_title">Start on boot</string>
+    <string name="startonbootup_summary">Start app and login at device start up</string>
 
     <string name="autoemail_title">Email</string>
     <string name="autoemail_summary">Automatically emails the log file to an address of your choice</string>
@@ -297,7 +299,7 @@
     <string name="owncloud_directory_summary">Folder to use on ownCloud server. Ensure that it exists or upload will fail.</string>
     <string name="owncloud_test">Test ownCloud Upload</string>
     <string name="owncloud_test_summary">Upload a test file to the ownCloud server</string>
-   
+
     <string name="owncloud_testing">Testing ownCloud upload</string>
     <string name="owncloud_invalid_settings">Invalid settings</string>
     <string name="owncloud_invalid_summary">Some of your settings are invalid. Please ensure that you have filled out all relevant fields. </string>

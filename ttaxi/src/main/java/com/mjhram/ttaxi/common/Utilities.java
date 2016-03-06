@@ -21,46 +21,25 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.provider.Settings;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.view.View;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mjhram.ttaxi.R;
-import com.mjhram.ttaxi.common.slf4j.SessionLogcatAppender;
 
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Utilities {
 
@@ -368,18 +347,16 @@ public class Utilities {
         return sdf.format(dateToFormat);
     }
 
-    public static String GetReadableDateTime(Date dateToFormat) {
-        /**
-         * Similar to GetIsoDateTime(), this function is used in
-         * AutoEmailHelper, and we want machine-readable output.
-         */
+    /*public static String GetReadableDateTime(Date dateToFormat) {
+         // Similar to GetIsoDateTime(), this function is used in
+         //AutoEmailHelper, and we want machine-readable output.
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy HH:mm",
                 Locale.US);
         return sdf.format(dateToFormat);
     }
 
 
-    /*public static boolean IsEmailSetup() {
+    public static boolean IsEmailSetup() {
         return AppSettings.isEmailAutoSendEnabled()
                 && AppSettings.getAutoEmailTargets().length() > 0
                 && AppSettings.getSmtpServer().length() > 0
@@ -465,7 +442,7 @@ public class Utilities {
     }
 
 
-    public static byte[] GetByteArrayFromInputStream(InputStream is) {
+    /*public static byte[] GetByteArrayFromInputStream(InputStream is) {
 
         try {
             int length;
@@ -501,11 +478,11 @@ public class Utilities {
     }
 
     /**
-     * Loops through an input stream and converts it into a string, then closes the input stream
-     *
-     * @param is
-     * @return
-     */
+    // * Loops through an input stream and converts it into a string, then closes the input stream
+    // *
+    // * @param is
+     //* @return
+     //
     public static String GetStringFromInputStream(InputStream is) {
         String line;
         StringBuilder total = new StringBuilder();
@@ -534,11 +511,11 @@ public class Utilities {
 
 
     /**
-     * Converts an input stream containing an XML response into an XML Document object
-     *
-     * @param stream
-     * @return
-     */
+    // * Converts an input stream containing an XML response into an XML Document object
+    // *
+    // * @param stream
+    // * @return
+    //
     public static Document GetDocumentFromInputStream(InputStream stream) {
         Document doc;
 
@@ -554,12 +531,12 @@ public class Utilities {
         return doc;
     }
 
-    /**
-     * Gets the GPSLogger-specific MIME type to use for a given filename/extension
-     *
-     * @param fileName
-     * @return
-     */
+    ///
+     // Gets the GPSLogger-specific MIME type to use for a given filename/extension
+    //
+     // @param fileName
+     // @return
+     //
     public static String GetMimeTypeFromFileName(String fileName) {
 
         if (fileName == null || fileName.length() == 0) {
@@ -587,7 +564,7 @@ public class Utilities {
         //Unknown mime type
         return "application/octet-stream";
 
-    }
+    }*/
 
     public static float GetBatteryLevel(Context context) {
         Intent batteryIntent = context.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -608,13 +585,13 @@ public class Utilities {
     }
 
 
-    public static String HtmlDecode(String text) {
+    /*public static String HtmlDecode(String text) {
         if (IsNullOrEmpty(text)) {
             return text;
         }
 
         return text.replace("&amp;", "&").replace("&quot;", "\"");
-    }
+    }*/
 
     public static String GetBuildSerial() {
         try {
@@ -624,9 +601,9 @@ public class Utilities {
         }
     }
 
-    public static File[] GetFilesInFolder(File folder) {
+    /*public static File[] GetFilesInFolder(File folder) {
         return GetFilesInFolder(folder, null);
-    }
+    }*/
 
     public static File[] GetFilesInFolder(File folder, FilenameFilter filter) {
 
@@ -670,7 +647,7 @@ public class Utilities {
         return storageFolder;
     }
 
-    public static boolean IsPackageInstalled(String targetPackage, Context context){
+    /*public static boolean IsPackageInstalled(String targetPackage, Context context){
         List<ApplicationInfo> packages;
         PackageManager pm;
         pm = context.getPackageManager();
@@ -703,7 +680,7 @@ public class Utilities {
                 }
             });
         }
-    }
+    }*/
 
     private static NetworkInfo getActiveNetworkInfo(Context context) {
         if (context == null) {
@@ -717,7 +694,7 @@ public class Utilities {
         return cm.getActiveNetworkInfo();
     }
 
-    public static boolean isNetworkAvailable(Context context) {
+    /*public static boolean isNetworkAvailable(Context context) {
         NetworkInfo info = getActiveNetworkInfo(context);
         return (info != null && info.isConnected());
     }
@@ -781,7 +758,7 @@ public class Utilities {
                 new String[] { file.getPath() },
                 new String[] { mimeType },
                 null);
-    }
+    }*/
 
     public static int parseWithDefault(String number, int defaultVal) {
         try {

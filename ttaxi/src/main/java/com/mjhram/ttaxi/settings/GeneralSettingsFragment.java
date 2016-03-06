@@ -50,7 +50,7 @@ public class GeneralSettingsFragment extends PreferenceFragment implements Prefe
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.pref_general);
-        Preference prefListeners = (Preference)findPreference("language");
+        Preference prefListeners = findPreference("language");
         prefListeners.setOnPreferenceClickListener(this);
 
         /*Preference aboutInfo = findPreference("about_version_info");

@@ -15,8 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/dlgFee"
-            android:id="@+id/textView2" />
+            android:text="@string/dlgFee" />
 
         <EditText
             android:layout_width="match_parent"
@@ -36,11 +35,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/dlgNoOfPassengers"
-            android:id="@+id/textView" />
+            android:text="@string/dlgNoOfPassengers" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
@@ -54,8 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/dlgAdditionalCarry"
-        android:id="@+id/textView3" />
+        android:text="@string/dlgAdditionalCarry" />
 
     <EditText
         android:layout_width="match_parent"

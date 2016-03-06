@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="autoemail_presetvalues">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>99</item>
-    </string-array>
-
-
-    <string-array name="osm_visibility_choices">
-        <item>private</item>
-        <item>public</item>
-        <item>trackable</item>
-        <item>identifiable</item>
-    </string-array>
-
-    <string-array name="opengts_server_communication_methods">
-        <item>HTTP GET</item>
-        <item>UDP Raw</item>
-    </string-array>
-
-    <string-array name="opengts_server_communication_methods_values">
-        <item>HTTP</item>
-        <item>UDP</item>
-    </string-array>
-
-    <string-array name="autoftp_ssltls_values">
-        <item> </item>
-        <item>SSL</item>
-        <item>TLS</item>
-    </string-array>
 
     <string-array name="listeners">
         <item>@string/listeners_gps</item>

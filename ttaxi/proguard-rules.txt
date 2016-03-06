@@ -31,12 +31,12 @@
 #If you are using custom exceptions, add this line so that custom exception types are skipped during obfuscation:
 -keep public class * extends java.lang.Exception
 
-
+#to stop the onEvent methods being stripped out:
+#https://github.com/greenrobot/EventBus/issues/6
 -keepclassmembers class ** {
     public void onEvent(**);
 }
 -keepclassmembers class ** {
 public void onEventMainThread(**);
 }
-
 -keepclassmembers,includedescriptorclasses class ** { public void onEvent*(**); }

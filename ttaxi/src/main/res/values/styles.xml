@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme"  parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
         <!-- colorPrimary is used for the default action bar background -->
@@ -27,10 +27,13 @@
     </style>
 
 
-
     <color name="primaryColor">#607d8b</color>
     <color name="primaryColorDark">#455a64</color>
     <color name="accentColor">#448aff</color>
     <color name="primaryColorLight">#CFD8DC</color>
     <color name="divider">#B6B6B6</color>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

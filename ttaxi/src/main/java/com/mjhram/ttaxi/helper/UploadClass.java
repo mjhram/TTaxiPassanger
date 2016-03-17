@@ -34,11 +34,72 @@ public class UploadClass {
     private static final String URL_getPassangerState = "http://www.ttaxi1.com/getPassangerState.php";
     private static final String TAG = UploadClass.class.getSimpleName();
 
+
     public UploadClass(Context theCx) {
         cx = theCx;
         pDialog = new ProgressDialog(cx);
         pDialog.setCancelable(false);
 
+    }
+
+    public void updateUserInfo(final String username, final String useremail, final String userphone) {
+        // Tag used to cancel the request
+        String tag_string = "modifyUserInfo";
+
+        pDialog.setMessage(cx.getString(R.string.uploadDlgMsgUpdatingInfo));
+        showDialog();
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                Constants.URL_updateUserInfo, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "updateTReq Response: " + response);
+                hideDialog();
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        AppSettings.setPhone(userphone);
+                        AppSettings.setEmail(useremail);
+                        AppSettings.setName(username);
+                    } else {
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(cx,
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "update User Info Error: " + error.getMessage());
+                Toast.makeText(cx,
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("tag", "updateUserInfo");
+                params.put("username", username);
+                params.put("useremail", useremail);
+                params.put("userphone", userphone);
+                params.put("uid", AppSettings.getUid());
+                return params;
+            }
+        };
+        // Adding request to request queue
+        AppSettings ac = AppSettings.getInstance();
+        ac.addToRequestQueue(strReq, tag_string);
     }
 
     public void getPassangerState(final String passangerId) {
@@ -178,7 +239,7 @@ public class UploadClass {
             protected Map<String, String> getParams() {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("tag", "updateTRequest");
+                params.put("tag", "updateTRequestByPassenger");
                 params.put("requestId", requestId);
                 params.put("state", state);
                 params.put("drvId", "-1");

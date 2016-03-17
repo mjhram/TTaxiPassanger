@@ -118,6 +118,16 @@ public class AppSettings extends Application {
         return prefs.getString(Constants.KEY_UID, "-1");
     }
 
+    public static void setPhoto(String photo){
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(Constants.KEY_PHOTO, photo);
+        editor.commit();
+    }
+
+    public static String getPhoto(){
+        String tmp = prefs.getString(Constants.KEY_PHOTO, "");
+        return tmp;
+    }
     public static String getEmail(){
         String tmp = prefs.getString(Constants.KEY_EMAIL, "");
         return tmp;
@@ -139,6 +149,11 @@ public class AppSettings extends Application {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(Constants.KEY_PHONE, phone);
         editor.commit();
+    }
+
+    public static String getPhone(){
+        String tmp = prefs.getString(Constants.KEY_PHONE, "");
+        return tmp;
     }
 
     public static String getName(){

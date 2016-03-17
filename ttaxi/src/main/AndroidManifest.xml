@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.mjhram.ttaxi"
-          android:installLocation="auto"
-    >
-    <permission android:name="com.mjhram.ttaxi.permission.C2D_MESSAGE"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mjhram.ttaxi"
+    android:installLocation="auto">
+
+    <permission
+        android:name="com.mjhram.ttaxi.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="com.mjhram.ttaxi.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.SEND" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"
-                     tools:ignore="MockLocation"/>
-
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission
+        android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- Creating Permission to receive Google Maps -->
     <permission
@@ -38,99 +39,97 @@
         android:required="true" />
 
     <application
+        android:name=".common.AppSettings"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="com.mjhram.ttaxi.common.AppSettings"
-        >
+        android:theme="@style/AppTheme">
+
         <!-- Google Maps Fragment API Key Data -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/googleMapsApiKey" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
         <activity
-            android:name="com.mjhram.ttaxi.GpsMainActivity"
+            android:name=".GpsMainActivity"
             android:configChanges="keyboardHidden|orientation|locale|layoutDirection"
             android:label="@string/app_name"
             android:uiOptions="splitActionBarWhenNarrow"
-            android:windowSoftInputMode="adjustNothing"
-            >
-        </activity>
-
+            android:windowSoftInputMode="adjustNothing"></activity>
         <activity
-            android:name="com.mjhram.ttaxi.login_register.LoginActivity"
+            android:name=".login_register.LoginActivity"
             android:configChanges="keyboardHidden|orientation|locale|layoutDirection"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
-            >
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mjhram.ttaxi.login_register.RegisterActivity"
+            android:name=".login_register.RegisterActivity"
             android:configChanges="keyboardHidden|orientation|locale|layoutDirection"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.mjhram.ttaxi.MainPreferenceActivity"
+            android:name=".MainPreferenceActivity"
             android:configChanges="keyboardHidden|orientation|locale|layoutDirection"
             android:label="@string/settings_screen_name"
-            android:parentActivityName="com.mjhram.ttaxi.GpsMainActivity" >
+            android:parentActivityName=".GpsMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mjhram.ttaxi.GpsMainActivity" />
+
             <intent-filter>
                 <action android:name="com.mjhram.ttaxi.MAIN_PREFS" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:host="authorize" android:scheme="gpslogger" />
+
+                <data
+                    android:host="authorize"
+                    android:scheme="gpslogger" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Faq.Faqtivity"
             android:configChanges="keyboardHidden|orientation|locale|layoutDirection"
             android:label="@string/faq_screen_title"
             android:launchMode="singleTask"
-            android:parentActivityName="com.mjhram.ttaxi.GpsMainActivity" >
+            android:parentActivityName=".GpsMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mjhram.ttaxi.GpsMainActivity" />
         </activity>
 
-
         <service
-            android:name="com.mjhram.ttaxi.gcm_client.MyGcmListenerService"
-            android:exported="false" >
+            android:name=".gcm_client.MyGcmListenerService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
         <service
-            android:name="com.mjhram.ttaxi.gcm_client.MyInstanceIDListenerService"
+            android:name=".gcm_client.MyInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
         <service
-            android:name="com.mjhram.ttaxi.gcm_client.RegistrationIntentService"
-            android:exported="false">
-        </service>
+            android:name=".gcm_client.RegistrationIntentService"
+            android:exported="false"></service>
+
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
@@ -141,7 +140,12 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="67e5e650c7c58856fafeae0a91405d1791287654"/>
+            android:value="67e5e650c7c58856fafeae0a91405d1791287654" />
+
+        <activity
+            android:name=".settings.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -17,6 +17,7 @@
 
 package com.mjhram.ttaxi.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -52,6 +53,9 @@ public class GeneralSettingsFragment extends PreferenceFragment implements Prefe
         addPreferencesFromResource(R.xml.pref_general);
         Preference prefListeners = findPreference("language");
         prefListeners.setOnPreferenceClickListener(this);
+
+        Preference profileListeners = findPreference("user_profile");
+        profileListeners.setOnPreferenceClickListener(this);
 
         /*Preference aboutInfo = findPreference("about_version_info");
         try {
@@ -111,6 +115,8 @@ public class GeneralSettingsFragment extends PreferenceFragment implements Prefe
                         }
                     }).show();
             return true;
+        } else if(preference.getKey().equalsIgnoreCase("user_profile")){
+            startActivity(new Intent(GeneralSettingsFragment.this.getActivity(), ProfileActivity.class));
         }
         return false;
     }

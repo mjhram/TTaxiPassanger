@@ -20,6 +20,7 @@ public interface Constants {
     String UPDATE_REG_ID        = "updateRegId";
 
     String KEY_IS_LOGGEDIN = "isLoggedIn";
+	String KEY_PHOTO = "userPhoto";
     String KEY_NAME = "name";
 	String KEY_PHONE = "userPhone";
 	String KEY_EMAIL = "key_email";
@@ -31,8 +32,10 @@ public interface Constants {
 
 	String TRequest_Expired = "expired";
 	String TRequest_Canceled = "canceled";
-	String URL_updateTRequest = "http://www.ttaxi1.com/updateTRequest.php";
-	String URL_UpdateRegId = "http://www.ttaxi1.com/updateRegId.php";
+	String URL_updateTRequest = SERVER_URL+"/updateTRequest.php";
+	String URL_updateUserInfo = SERVER_URL+"/updateUserInfo.php";
+	String URL_uploadImage = SERVER_URL+"/uploadImage.php";
+	String URL_UpdateRegId = SERVER_URL+"/updateRegId.php";
 	String RequestsIdx = "idx";
 	String RequestsPassangerId = "passangerId";
 	String RequestsPassangerName = "passangerName";

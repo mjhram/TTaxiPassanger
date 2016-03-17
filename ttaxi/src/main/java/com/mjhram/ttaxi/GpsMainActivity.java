@@ -713,6 +713,10 @@ public class GpsMainActivity extends GenericViewFragment
             toMarker.remove();
             toMarker = null;
         }
+        if(driverMarker != null) {
+            driverMarker.remove();
+            driverMarker = null;
+        }
     }
 
     void setStateTo(TRequestObj tRequestObj) {
@@ -815,7 +819,7 @@ public class GpsMainActivity extends GenericViewFragment
         //picked and done states
         String state = tRequestUpdatedEvent.treqState;
         AppSettings.requestId = -1;//even if the state is dropped
-        cancelTRequest(null);
+        cancelTRequest(null);//requestId =-1, so that not to upload state
         if(state.equalsIgnoreCase("assigned")) {
             btnPickDrop.setVisibility(View.GONE);
             driverInfoLayout.setVisibility(View.VISIBLE);
@@ -1278,8 +1282,8 @@ public class GpsMainActivity extends GenericViewFragment
     void cancelTRequest(String tReqState) {
         pickdropState=0;
         btnPickDrop.setText(getString(R.string.gpsMainBtnPickFrom));
-        UploadClass upload = new UploadClass(GpsMainActivity.this);
         if(AppSettings.requestId != -1) {
+            UploadClass upload = new UploadClass(GpsMainActivity.this);
             upload.setTRequestState(Integer.toString(AppSettings.requestId), tReqState);
             AppSettings.requestId = -1;
         }

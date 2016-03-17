@@ -6,6 +6,10 @@
         android:key="language"
         android:summary="@string/pref_language_summary"
         android:title="@string/pref_language_title" />
+    <Preference
+        android:key="user_profile"
+        android:summary="@string/pref_profile_summary"
+        android:title="@string/pref_profile_title" />
     <!-- com.mjhram.ttaxi.views.component.CustomSwitchPreference
         android:title="@string/startonbootup_title"
         android:summary="@string/startonbootup_summary"

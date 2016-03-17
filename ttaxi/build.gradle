@@ -45,7 +45,7 @@ android {
 
 
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion '23.0.1'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
@@ -122,32 +122,33 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:22.+'
+    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:design:22.2.1'
     //compile 'com.google.android.gms:play-services-base:7.5.0'
     //compile 'com.google.android.gms:play-services-location:7.5.0'
     //compile 'com.google.android.gms:play-services:8.1.0'
     compile 'com.google.android.gms:play-services-gcm:8.1.0'
     compile 'com.google.android.gms:play-services-maps:8.1.0'
     compile 'com.google.android.gms:play-services-location:8.1.0'
-
     //compile 'com.google.android.gms:play-services-drive:7.5.0'
     //compile 'commons-net:commons-net:2.0' //for 'ftp' upload
     /*compile('org.apache.httpcomponents:httpmime:4.0.3') {
-                                        exclude module: 'commons-logging'
-                                        exclude module: 'httpcore'
-                                        exclude module: 'httpclient'
-                                    }
-                                    compile('org.apache.james:apache-mime4j:0.6.1') {
-                                        exclude module: 'commons-logging'
-                                    }*/
+                                            exclude module: 'commons-logging'
+                                            exclude module: 'httpcore'
+                                            exclude module: 'httpclient'
+                                        }
+                                        compile('org.apache.james:apache-mime4j:0.6.1') {
+                                            exclude module: 'commons-logging'
+                                        }*/
     /*compile('oauth.signpost:signpost-commonshttp4:1.2.1.1') {
-                                        exclude module: 'commons-logging'
-                                        exclude module: 'httpcore'
-                                        exclude module: 'httpclient'
-                                    }
-                                    compile('oauth.signpost:signpost-core:1.2.1.1') {
-                                        exclude module: 'commons-codec'
-                                    }*/
+                                            exclude module: 'commons-logging'
+                                            exclude module: 'httpcore'
+                                            exclude module: 'httpclient'
+                                        }
+                                        compile('oauth.signpost:signpost-core:1.2.1.1') {
+                                            exclude module: 'commons-codec'
+                                        }*/
     //compile 'com.googlecode.json-simple:json-simple:1.1'
     //Logging
     compile 'org.slf4j:slf4j-api:1.7.6'
@@ -175,8 +176,8 @@ dependencies {
     //compile 'com.mendhak.gpsloggersupport:owncloud-android-library:0.0.1@aar'
     //Required by owncloud library
     /*compile('commons-httpclient:commons-httpclient:3.1') {
-                                        exclude module: 'commons-logging'
-                                    }*/
+                                            exclude module: 'commons-logging'
+                                        }*/
     //compile 'org.apache.jackrabbit:jackrabbit-webdav:2.10.1'
     //Expandable textview in the FAQ
     compile 'com.ms-square:expandableTextView:0.1.4'

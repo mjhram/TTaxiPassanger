@@ -85,7 +85,7 @@ import com.mjhram.ttaxi.common.Utilities;
 import com.mjhram.ttaxi.common.events.CommandEvents;
 import com.mjhram.ttaxi.common.events.ServiceEvents;
 import com.mjhram.ttaxi.common.slf4j.SessionLogcatAppender;
-import com.mjhram.ttaxi.gcm_client.Constants;
+import com.mjhram.ttaxi.helper.Constants;
 import com.mjhram.ttaxi.helper.UploadClass;
 import com.mjhram.ttaxi.views.GenericViewFragment;
 

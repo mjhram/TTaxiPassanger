@@ -28,7 +28,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
-import com.mjhram.ttaxi.gcm_client.Constants;
+import com.mjhram.ttaxi.helper.Constants;
 import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.config.Configuration;
 

@@ -14,7 +14,6 @@ import com.mjhram.ttaxi.common.AppSettings;
 import com.mjhram.ttaxi.common.DriverInfo;
 import com.mjhram.ttaxi.common.TRequestObj;
 import com.mjhram.ttaxi.common.events.ServiceEvents;
-import com.mjhram.ttaxi.gcm_client.Constants;
 
 import org.json.JSONException;
 import org.json.JSONObject;

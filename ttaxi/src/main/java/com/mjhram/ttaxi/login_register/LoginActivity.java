@@ -30,7 +30,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
-import com.mjhram.ttaxi.gcm_client.Constants;
+import com.mjhram.ttaxi.helper.Constants;
 import com.mjhram.ttaxi.gcm_client.RegistrationIntentService;
 import com.mjhram.ttaxi.login_register.app.AppConfig;
 

@@ -1,4 +1,4 @@
-package com.mjhram.ttaxi.gcm_client;
+package com.mjhram.ttaxi.helper;
 
 public interface Constants {
 

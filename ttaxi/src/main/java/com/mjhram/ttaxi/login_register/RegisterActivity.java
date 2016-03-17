@@ -22,7 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.mjhram.ttaxi.GpsMainActivity;
 import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
-import com.mjhram.ttaxi.gcm_client.Constants;
+import com.mjhram.ttaxi.helper.Constants;
 import com.mjhram.ttaxi.login_register.app.AppConfig;
 import com.mjhram.ttaxi.login_register.helper.SQLiteHandler;
 

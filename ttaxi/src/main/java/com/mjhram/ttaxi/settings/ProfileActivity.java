@@ -14,12 +14,13 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
@@ -36,7 +37,8 @@ import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
     EditText    edit_username, edit_email, edit_phone;
-    ImageView   photoImageView;
+    //ImageView   photoImageView;
+    private NetworkImageView networkImageViewUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +62,26 @@ public class ProfileActivity extends AppCompatActivity {
         edit_username = (EditText) findViewById(R.id.profile_username);
         edit_email =(EditText) findViewById(R.id.profile_email);
         edit_phone =(EditText) findViewById(R.id.profile_phone);
-        photoImageView=(ImageView) findViewById(R.id.profilePhoto);
-        photoImageView.setOnClickListener(new View.OnClickListener() {
+        networkImageViewUser = (NetworkImageView) findViewById(R.id.profilePhoto);
+        {
+            //final String IMAGE_URL = "http://developer.android.com/images/training/system-ui.png";
+            ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
+            networkImageViewUser.setImageUrl(Constants.URL_downloadUserPhoto+AppSettings.getPhotoId(), mImageLoader);
+        }
+        networkImageViewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showFileChooser();
             }
         });
+
+        /*photoImageView=(ImageView) findViewById(R.id.profilePhoto);
+        photoImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFileChooser();
+            }
+        });*/
     }
 
     @Override
@@ -75,11 +90,11 @@ public class ProfileActivity extends AppCompatActivity {
         edit_username.setText(AppSettings.getName());
         edit_email.setText(AppSettings.getEmail());
         edit_phone.setText(AppSettings.getPhone());
-        String tmp = AppSettings.getPhoto();
+        /*String tmp = AppSettings.getPhoto();
         if(!tmp.isEmpty()) {
             Bitmap bitmap = getImageFromString(tmp);
             photoImageView.setImageBitmap(bitmap);
-        }
+        }*/
     }
 
     private String getStringImage(Bitmap bmp){
@@ -151,7 +166,6 @@ public class ProfileActivity extends AppCompatActivity {
             try {
                 Bitmap profilePhotoBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 updateUserPhoto(profilePhotoBitmap);
-                //photoImageView.setImageBitmap(profilePhotoBitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -192,7 +206,14 @@ public class ProfileActivity extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        photoImageView.setImageBitmap(bitmap);
+                        String newId = jObj.getString("newid");
+                        AppSettings.setPhotoId(newId);
+                        {
+                            //final String IMAGE_URL = "http://developer.android.com/images/training/system-ui.png";
+                            ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
+                            networkImageViewUser.setImageUrl(Constants.URL_downloadUserPhoto+newId, mImageLoader);
+                        }
+                        //photoImageView.setImageBitmap(bitmap);
                     } else {
                         // Error occurred in registration. Get the error
                         // message

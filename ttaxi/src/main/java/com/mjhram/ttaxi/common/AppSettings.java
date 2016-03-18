@@ -128,11 +128,22 @@ public class AppSettings extends Application {
         editor.putString(Constants.KEY_PHOTO, photo);
         editor.commit();
     }
-
     public static String getPhoto(){
         String tmp = prefs.getString(Constants.KEY_PHOTO, "");
         return tmp;
     }
+
+    public static String getPhotoId(){
+        String tmp = prefs.getString(Constants.KEY_PHOTO_ID, "");
+        return tmp;
+    }
+
+    public static void setPhotoId(String photoId){
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(Constants.KEY_PHOTO_ID, photoId);
+        editor.commit();
+    }
+
     public static String getEmail(){
         String tmp = prefs.getString(Constants.KEY_EMAIL, "");
         return tmp;

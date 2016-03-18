@@ -21,6 +21,7 @@ public interface Constants {
 
     String KEY_IS_LOGGEDIN = "isLoggedIn";
 	String KEY_PHOTO = "userPhoto";
+	String KEY_PHOTO_ID = "userPhotoId";
     String KEY_NAME = "name";
 	String KEY_PHONE = "userPhone";
 	String KEY_EMAIL = "key_email";

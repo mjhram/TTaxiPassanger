@@ -190,9 +190,11 @@ public class LoginActivity extends Activity {
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
                         String email = user.getString("email");
+                        String imageId = user.getString("image_id");
                         //String created_at = user.getString("created_at");
 
                         AppSettings.setLogin(true,name, email, uid);
+                        AppSettings.setPhotoId(imageId);
                         AppSettings.shouldUploadRegId = false;
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

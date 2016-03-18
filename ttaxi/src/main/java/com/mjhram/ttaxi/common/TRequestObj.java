@@ -9,6 +9,7 @@ public class TRequestObj {
     public String driverName;
     public String driverInfo;
     public String driverPhone;
+    public String driverPhotoUrl;
     public String passangerName;
     public String passanger_id;
     public double fromLat, fromLong, toLat, toLong;

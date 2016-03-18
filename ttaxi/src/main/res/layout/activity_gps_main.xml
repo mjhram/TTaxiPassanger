@@ -112,11 +112,22 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:id="@+id/imageViewDriver"
+                    android:id="@+id/imageViewDriver2"
                     android:src="@drawable/portraitplaceholder"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:visibility="gone"
+                    android:alpha=".6"/>
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/imageViewDriver"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/portraitplaceholder"
                     android:alpha=".6"/>
 
                 <TextView

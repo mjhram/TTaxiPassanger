@@ -36,6 +36,7 @@ public interface Constants {
 	String URL_updateUserInfo = SERVER_URL+"/updateUserInfo.php";
 	String URL_uploadImage = SERVER_URL+"/uploadImage.php";
 	String URL_UpdateRegId = SERVER_URL+"/updateRegId.php";
+	String URL_downloadUserPhoto = SERVER_URL+"/downloadImage.php?id=";
 	String RequestsIdx = "idx";
 	String RequestsPassangerId = "passangerId";
 	String RequestsPassangerName = "passangerName";
@@ -50,6 +51,7 @@ public interface Constants {
     String RequestsDriverName = "driverName";
     String RequestsDriverEmail = "driverEmail";
 	String RequestsDriverPhone = "driverPhone";
+	String RequestsDriverPhotoId = "driverPhotoId";
 	String RequestsSuggestedFee = "suggestedFee";
 	String RequestsNoOfPassangers = "noOfPassangers";
 	String RequestsAdditionalNotes = "additionalNotes";

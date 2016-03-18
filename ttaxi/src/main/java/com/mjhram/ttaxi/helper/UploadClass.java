@@ -142,6 +142,7 @@ public class UploadClass {
                             treq.time = c.getString(Constants.RequestsTime);
                             treq.secondsToNow = c.getString(Constants.RequestsSecondsToNow);
                             treq.driverName = c.getString(Constants.RequestsDriverName);
+                            treq.driverPhotoUrl = Constants.URL_downloadUserPhoto + c.getString(Constants.RequestsDriverPhotoId);
                             treq.driverInfo = cx.getString(R.string.uploadDriverInfo) + c.getString(Constants.RequestsDriverEmail);
                             treq.driverPhone = c.getString(Constants.RequestsDriverPhone);
                             treq.suggestedFee = c.getString(Constants.RequestsSuggestedFee);

@@ -59,6 +59,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -128,6 +130,7 @@ public class GpsMainActivity extends GenericViewFragment
     private TextView txtDriverName;
     private TextView txtDriverInfo;
     private TextView btnDriverPhone;
+    private NetworkImageView networkImageViewDriver;
 
     public String suggestedFee, noOfPassangers, additionalNotes;
 
@@ -148,6 +151,8 @@ public class GpsMainActivity extends GenericViewFragment
         driverInfoLayout.setVisibility(View.GONE);
         txtDriverName = (TextView) findViewById(R.id.textViewDriverName);
         txtDriverInfo = (TextView) findViewById(R.id.textViewDriverInfo);
+        networkImageViewDriver = (NetworkImageView) findViewById(R.id.imageViewDriver);
+
         btnDriverPhone = (Button) findViewById(R.id.btnDriverPhone);
         btnDriverPhone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -725,6 +730,11 @@ public class GpsMainActivity extends GenericViewFragment
         txtDriverName.setText(tRequestObj.driverName);
         txtDriverInfo.setText(tRequestObj.driverInfo);
         btnDriverPhone.setText(tRequestObj.driverPhone);
+        {
+            //final String IMAGE_URL = "http://developer.android.com/images/training/system-ui.png";
+            ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
+            networkImageViewDriver.setImageUrl(tRequestObj.driverPhotoUrl, mImageLoader);
+        }
         //driver not assigned yet & 15min elapsed => neglect it
         if(Integer.parseInt(tRequestObj.driverId) == -1) {
             int remainingSeconds = 900 - Integer.parseInt(tRequestObj.secondsToNow);

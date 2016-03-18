@@ -20,12 +20,15 @@ package com.mjhram.ttaxi.common;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.LruCache;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
 import com.mjhram.ttaxi.helper.Constants;
@@ -51,6 +54,7 @@ public class AppSettings extends Application {
     private static AppSettings instance;
     private static org.slf4j.Logger tracer = LoggerFactory.getLogger(AppSettings.class.getSimpleName());
     private RequestQueue mRequestQueue;
+    private ImageLoader mImageLoader;
     public static final String TAG = AppSettings.class.getSimpleName();
     public static String regId;
     public static boolean firstZooming = true;
@@ -80,6 +84,7 @@ public class AppSettings extends Application {
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String lang = getChosenLanguage();
         changeLang(getBaseContext(), lang);
+        getRequestQueue();//to initialize imageLoader
     }
 
     public static void changeLang(Context cx, String lang) {
@@ -1043,10 +1048,28 @@ public class AppSettings extends Application {
         if (mRequestQueue == null) {
             Context cntx = getApplicationContext();
             mRequestQueue = Volley.newRequestQueue(cntx);
+            mImageLoader = new ImageLoader(mRequestQueue,
+                    new ImageLoader.ImageCache() {
+                        private final LruCache<String, Bitmap>
+                                cache = new LruCache<String, Bitmap>(20);
+
+                        @Override
+                        public Bitmap getBitmap(String url) {
+                            return cache.get(url);
+                        }
+
+                        @Override
+                        public void putBitmap(String url, Bitmap bitmap) {
+                            cache.put(url, bitmap);
+                        }
+                    });
         }
         return mRequestQueue;
     }
 
+    public ImageLoader getImageLoader() {
+        return mImageLoader;
+    }
 
     public <T> void addToRequestQueue(Request<T> req, String tag) {
         req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);

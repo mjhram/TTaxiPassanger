@@ -136,18 +136,29 @@ public class RegisterActivity extends Activity {
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
                         String email = user.getString("email");
+                        //String imageId = user.getString("image_id");
                         String userPhone = user.getString("phone");
                         String created_at = user.getString("created_at");
 
                         // Inserting row in users table
                         db.addUser(name, email, userPhone, uid, created_at);
 
+                        AppSettings.setLogin(true,name, email, uid);
+                        //AppSettings.setPhotoId(imageId);
+                        AppSettings.shouldUploadRegId = false;
+                        // Launch main activity
+                        Intent intent = new Intent(RegisterActivity.this,
+                                GpsMainActivity.class);
+                        intent.putExtra(Constants.KEY_UID, AppSettings.getUid());
+                        intent.putExtra(Constants.KEY_EMAIL, AppSettings.getEmail());
+                        startActivity(intent);
+                        finish();
                         // Launch login activity
-                        Intent intent = new Intent(
+                        /*Intent intent = new Intent(
                             RegisterActivity.this,
                             LoginActivity.class);
                         startActivity(intent);
-                        finish();
+                        finish();*/
                     } else {
                         // user already exist or some other error
                         // Error occurred in registration. Get the error

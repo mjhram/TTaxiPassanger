@@ -63,11 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
         edit_email =(EditText) findViewById(R.id.profile_email);
         edit_phone =(EditText) findViewById(R.id.profile_phone);
         networkImageViewUser = (NetworkImageView) findViewById(R.id.profilePhoto);
-        {
-            //final String IMAGE_URL = "http://developer.android.com/images/training/system-ui.png";
-            ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
-            networkImageViewUser.setImageUrl(Constants.URL_downloadUserPhoto+AppSettings.getPhotoId(), mImageLoader);
-        }
+
         networkImageViewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +86,11 @@ public class ProfileActivity extends AppCompatActivity {
         edit_username.setText(AppSettings.getName());
         edit_email.setText(AppSettings.getEmail());
         edit_phone.setText(AppSettings.getPhone());
+        {
+            //final String IMAGE_URL = "http://developer.android.com/images/training/system-ui.png";
+            ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
+            networkImageViewUser.setImageUrl(Constants.URL_downloadUserPhoto+AppSettings.getPhotoId(), mImageLoader);
+        }
         /*String tmp = AppSettings.getPhoto();
         if(!tmp.isEmpty()) {
             Bitmap bitmap = getImageFromString(tmp);

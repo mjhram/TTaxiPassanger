@@ -191,9 +191,12 @@ public class LoginActivity extends Activity {
                         String name = user.getString("name");
                         String email = user.getString("email");
                         String imageId = user.getString("image_id");
+                        String phone = user.getString("phone");
                         //String created_at = user.getString("created_at");
 
                         AppSettings.setLogin(true,name, email, uid);
+                        AppSettings.setPhone(phone);
+
                         AppSettings.setPhotoId(imageId);
                         AppSettings.shouldUploadRegId = false;
                         // Launch main activity

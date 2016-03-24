@@ -23,6 +23,7 @@ import com.mjhram.ttaxi.GpsMainActivity;
 import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
 import com.mjhram.ttaxi.helper.Constants;
+import com.mjhram.ttaxi.helper.phpErrorMessages;
 import com.mjhram.ttaxi.login_register.app.AppConfig;
 import com.mjhram.ttaxi.login_register.helper.SQLiteHandler;
 
@@ -43,11 +44,13 @@ public class RegisterActivity extends Activity {
     private ProgressDialog pDialog;
     //private SessionManager session;
     private SQLiteHandler db;
+    private phpErrorMessages phpErrorMsgs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        phpErrorMsgs = new phpErrorMessages();
         inputFullName = (EditText) findViewById(R.id.name);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPhone = (EditText) findViewById(R.id.user_phone);
@@ -127,8 +130,8 @@ public class RegisterActivity extends Activity {
 
                 try {
                     JSONObject jObj = new JSONObject(response);
-                    int error = jObj.getInt("error");
-                    if (error == 0) {
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
                         // User successfully stored in MySQL
                         // Now store the user in sqlite
                         String uid = jObj.getString("uid");
@@ -163,7 +166,9 @@ public class RegisterActivity extends Activity {
                         // user already exist or some other error
                         // Error occurred in registration. Get the error
                         // message
-                        String errorMsg = jObj.getString("error_msg");
+                        //String errorMsg = jObj.getString("error_msg");
+                        int errorno = jObj.getInt("error_no");
+                        String errorMsg = phpErrorMsgs.msgMap.get(errorno);
                         Toast.makeText(getApplicationContext(),
                         errorMsg, Toast.LENGTH_LONG).show();
                     }

@@ -32,9 +32,10 @@ public class UploadClass {
     private static final String URL_addTRequest = "http://www.ttaxi1.com/addTRequest.php";
     private static final String URL_getPassangerState = "http://www.ttaxi1.com/getPassangerState.php";
     private static final String TAG = UploadClass.class.getSimpleName();
-
+    private phpErrorMessages phpErrorMsgs;
 
     public UploadClass(Context theCx) {
+        phpErrorMsgs = new phpErrorMessages();
         cx = theCx;
         pDialog = new ProgressDialog(cx);
         pDialog.setCancelable(false);
@@ -217,7 +218,9 @@ public class UploadClass {
                     } else {
                         // Error occurred in registration. Get the error
                         // message
-                        String errorMsg = jObj.getString("error_msg");
+                        //String errorMsg = jObj.getString("error_msg");
+                        int errorno = jObj.getInt("error_no");
+                        String errorMsg = phpErrorMsgs.msgMap.get(errorno);
                         Toast.makeText(cx,
                                 errorMsg, Toast.LENGTH_LONG).show();
                     }
@@ -279,7 +282,9 @@ public class UploadClass {
                         AppSettings.requestId = -1;
                         // Error occurred in registration. Get the error
                         // message
-                        String errorMsg = jObj.getString("error_msg");
+                        //String errorMsg = jObj.getString("error_msg");
+                        int errorno = jObj.getInt("error_no");
+                        String errorMsg = phpErrorMsgs.msgMap.get(errorno);
                         //Toast.makeText(cx,
                                 //errorMsg, Toast.LENGTH_LONG).show();
                         hideDialog();

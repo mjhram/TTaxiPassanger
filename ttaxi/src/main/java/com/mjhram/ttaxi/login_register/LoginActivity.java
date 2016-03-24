@@ -32,6 +32,7 @@ import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
 import com.mjhram.ttaxi.helper.Constants;
 import com.mjhram.ttaxi.gcm_client.RegistrationIntentService;
+import com.mjhram.ttaxi.helper.phpErrorMessages;
 import com.mjhram.ttaxi.login_register.app.AppConfig;
 
 import org.json.JSONException;
@@ -53,6 +54,7 @@ public class LoginActivity extends Activity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     //private ProgressBar mRegistrationProgressBar;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private phpErrorMessages phpErrorMsgs;
 
     private void setButtons(boolean enabled) {
         btnLogin.setEnabled(enabled);
@@ -66,6 +68,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        phpErrorMsgs = new phpErrorMessages();
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -208,7 +211,9 @@ public class LoginActivity extends Activity {
                         finish();
                     } else {
                         // Error in login. Get the error message
-                        String errorMsg = jObj.getString("error_msg");
+                        //String errorMsg = jObj.getString("error_msg");
+                        int errorno = jObj.getInt("error_no");
+                        String errorMsg = phpErrorMsgs.msgMap.get(errorno);
                         Toast.makeText(getApplicationContext(),
                                 errorMsg, Toast.LENGTH_LONG).show();
                     }

@@ -1,12 +1,16 @@
 package com.mjhram.ttaxi.helper;
 
+import android.content.Context;
+
+import com.mjhram.ttaxi.R;
+
 import java.util.HashMap;
 
 /**
  * Created by mohammad.haider on 3/24/2016.
  */
 public class phpErrorMessages {
-    private String msgs[] = {
+    /*private String msgs[]; = {
             //addTrequest://10-19
             "no error. request added successfully",
             "Passenger already has active request",
@@ -47,7 +51,7 @@ public class phpErrorMessages {
             //uploadImage
             "Image Uploaded Successfully",
             "Error Uploading Image"
-    };
+    };*/
     private int msgno[] = {
             //addTrequest://10-
             10,11,12,
@@ -73,7 +77,10 @@ public class phpErrorMessages {
     };
     public HashMap<Integer, String> msgMap;
 
-    public phpErrorMessages(){
+    public phpErrorMessages(Context cx){
+        String[] msgs = cx.getResources().getStringArray(R.array.phpErrorMsgs);
+        //int[] msgno = cx.getResources().getIntArray(R.array.phpErrorMsgNos);
+
         msgMap = new HashMap<Integer, String>();
         for (int i = 0; i < msgno.length; i++) {
             msgMap.put(msgno[i], msgs[i]);

@@ -35,8 +35,8 @@ public class UploadClass {
     private phpErrorMessages phpErrorMsgs;
 
     public UploadClass(Context theCx) {
-        phpErrorMsgs = new phpErrorMessages();
         cx = theCx;
+        phpErrorMsgs = new phpErrorMessages(cx);
         pDialog = new ProgressDialog(cx);
         pDialog.setCancelable(false);
 

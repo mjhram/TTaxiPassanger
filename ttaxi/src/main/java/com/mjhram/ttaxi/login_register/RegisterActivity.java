@@ -50,7 +50,7 @@ public class RegisterActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        phpErrorMsgs = new phpErrorMessages();
+        phpErrorMsgs = new phpErrorMessages(this);
         inputFullName = (EditText) findViewById(R.id.name);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPhone = (EditText) findViewById(R.id.user_phone);

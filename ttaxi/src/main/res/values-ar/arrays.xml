@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+    <string-array name="phpErrorMsgs">
+        <!-- addTrequest://10-19 -->
+        <item> "تم اضافة الطلب بنجاح"</item>
+        <item> "الراكب لديه طلب فعال مسبقا"</item>
+        <item> "لم تتم اضافة الطلب"</item>
+        <!-- acceptTrequest://20- -->
+        <item> "تم تحديث الطلب بنجاح"</item>
+        <item> "السائق لديه طلب فعال مسبقا"</item>
+        <item> "الطلب تم تخصيصه"</item>
+        <item> "لم يتم تحديث الطلب"</item>
+        <!-- login_register: 30- -->
+        <item> "نجاح"</item>
+        <item> "كلمة مرور اوبريد الكتروني خاطئ"</item>
+        <item> "المستخدم موجود"</item>
+        <item> "خطأ بالتسجيل"</item>
+        <item> "قيمة 'tag' خاطئة"</item>
+        <!-- logTaxiLoc: 40- -->
+        <item> "تم تحديث الموقع بنجاح"</item>
+        <item> "تمت اضافة الموقع بنجاح"</item>
+        <!-- updateRegId:50- -->
+        <item> "تم تحديث رقم التسجيل"</item>
+        <item> "خطأ اثناء تحديث رقم التسجيل"</item>
+        <!-- updateTaxiLoc: 60- -->
+        <item> "تم تحديث الموقع بنجاح"</item>
+        <item> "تم اضافة الموقع بنجاح"</item>
+        <!-- updateTaxiLocation: 70- -->
+        <item> "تم تحديث الموقع بنجاح"</item>
+        <item> "تم اضافة الموقع بنجاح"</item>
+        <item> "خطأ باضافة الموقع"</item>
+        <item> "خطأ بتحديث الموقع"</item>
+        <!-- updateTRequest: 80- -->
+        <item> "تم تحديث الطلب"</item>
+        <item> "خطأ بتحديث الطلب. الطلب مخصص مسبقا"</item>
+        <item> "خطأ بتحديث الطلب. الطلب مكتمل"</item>
+        <item> "خطأ بتحديث الطلب!"</item>
+        <!-- updateUserInfo: 90- -->
+        <item> "تم تحديث البيانات"</item>
+        <item> "خطأ بتحديث البيانات"</item>
+        <!-- uploadImage:100- -->
+        <item> "تم رفع الصورة بنجاح"</item>
+        <item> "خطأ برفع الصورة" </item>
+    </string-array>
+
+</resources>

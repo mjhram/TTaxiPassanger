@@ -31,6 +31,7 @@ public interface Constants {
 	String REGISTRATION_COMPLETE = "registrationComplete";
     String UPDATE_REQ = "updateRequest";
 
+	String URL_ads = SERVER_URL+"/images/";
 	String TRequest_Expired = "expired";
 	String TRequest_Canceled = "canceled";
 	String URL_updateTRequest = SERVER_URL+"/updateTRequest.php";

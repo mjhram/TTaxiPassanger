@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="applanguage">en</string>
     <string name="pref_profile_title">User Profile</string>
     <string name="pref_profile_summary">Change user profile</string>
     <string name="pref_language_title">Language</string>

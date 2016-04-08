@@ -18,6 +18,16 @@ public class ServiceEvents {
         }
     }
 
+    public static class UpdateAnnouncement {
+        public String annImage, annText, countOfDrivers, countOfPassengers;
+        public UpdateAnnouncement(String image, String text, String countDrv, String countPas){
+            annImage = image;
+            annText = text;
+            countOfDrivers = countDrv;
+            countOfPassengers = countPas;
+        }
+    }
+
     public static class UpdateStateEvent {
         public TRequestObj treqObj;
         public UpdateStateEvent(TRequestObj theTreqObj){

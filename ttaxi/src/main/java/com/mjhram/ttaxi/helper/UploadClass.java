@@ -121,7 +121,25 @@ public class UploadClass {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        String tmp = jObj.getString("requests");
+                        String tmp = jObj.getString("stats");
+                        String countDrv="";
+                        String countPas="";
+                        if(!tmp.equalsIgnoreCase("{}")) {
+                            JSONObject stats = new JSONObject(tmp);
+                            countDrv = stats.getString("Drv");
+                            countPas = stats.getString("Pas");
+                        }
+
+                        String tmpAnn = jObj.getString("announcements");
+                        String annImage = "", annText="";
+                        if(!tmpAnn.equalsIgnoreCase("{}")){
+                            JSONObject anns = new JSONObject(tmpAnn);
+                            annImage = anns.getString("annimage");
+                            annText = anns.getString("anntext");
+                        }
+                        EventBus.getDefault().post(new ServiceEvents.UpdateAnnouncement(annImage, annText, countDrv, countPas));
+
+                        tmp = jObj.getString("requests");
                         if(tmp.equalsIgnoreCase("{}")/*requests.length() == 0*/) {
                             //idle state: no requests
                             EventBus.getDefault().post(new ServiceEvents.UpdateStateEvent(null));
@@ -187,6 +205,8 @@ public class UploadClass {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("tag", "getPassangerState");
                 params.put("passangerId", passangerId);
+                String tmpLang = cx.getResources().getString(R.string.applanguage);
+                params.put("lang", tmpLang);
                 return params;
             }
         };

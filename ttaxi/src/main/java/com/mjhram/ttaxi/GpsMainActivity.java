@@ -132,6 +132,11 @@ public class GpsMainActivity extends GenericViewFragment
     private TextView btnDriverPhone;
     private NetworkImageView networkImageViewDriver;
 
+    private RelativeLayout relativeLayoutAds;
+    private ImageView btnAdsX;
+    private NetworkImageView networkivAds;
+    private TextView textviewAds;
+
     public String suggestedFee, noOfPassangers, additionalNotes;
 
     @Override
@@ -148,7 +153,7 @@ public class GpsMainActivity extends GenericViewFragment
 
         btnPickDrop = (Button) findViewById(R.id.btnPickDrop);
         driverInfoLayout = (RelativeLayout) findViewById(R.id.driverLayout);
-        driverInfoLayout.setVisibility(View.GONE);
+        driverInfoLayout.setVisibility(View.INVISIBLE);
         txtDriverName = (TextView) findViewById(R.id.textViewDriverName);
         txtDriverInfo = (TextView) findViewById(R.id.textViewDriverInfo);
         networkImageViewDriver = (NetworkImageView) findViewById(R.id.imageViewDriver);
@@ -162,6 +167,24 @@ public class GpsMainActivity extends GenericViewFragment
                 startActivity(callIntent);
             }
         });
+
+        relativeLayoutAds = (RelativeLayout) findViewById(R.id.relativeLayoutAds);
+        btnAdsX = (ImageButton) findViewById(R.id.btnAdsX);
+        btnAdsX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                relativeLayoutAds.setVisibility(View.GONE);
+            }
+        });
+        textviewAds = (TextView) findViewById(R.id.textview_ads);
+
+        networkivAds = (NetworkImageView) findViewById(R.id.networkivAds);
+        /*{
+            //final String IMAGE_URL = "http://developer.android.com/images/training/system-ui.png";
+            ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
+            networkivAds.setImageUrl(Constants.URL_ads+".jpg", mImageLoader);
+        }*/
+
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -709,7 +732,7 @@ public class GpsMainActivity extends GenericViewFragment
 
         btnPickDrop.setVisibility(View.VISIBLE);
         btnPickDrop.setText(getString(R.string.gpsMainBtnPickFrom));
-        driverInfoLayout.setVisibility(View.GONE);
+        driverInfoLayout.setVisibility(View.INVISIBLE);
         if(fromMarker != null) {
             fromMarker.remove();
             fromMarker = null;
@@ -747,7 +770,7 @@ public class GpsMainActivity extends GenericViewFragment
                 AppSettings.requestId = tRequestObj.idx;
                 pickdropState=3;
                 btnPickDrop.setVisibility(View.VISIBLE);
-                driverInfoLayout.setVisibility(View.GONE);
+                driverInfoLayout.setVisibility(View.INVISIBLE);
             }
         }
         //2. driver assigned or passanger picked
@@ -804,11 +827,47 @@ public class GpsMainActivity extends GenericViewFragment
     }
 
     @EventBusHook
+    public void onEventMainThread(ServiceEvents.UpdateAnnouncement updateAnnEvent){
+        String imageName = updateAnnEvent.annImage;
+        String tmpText = updateAnnEvent.annText;
+        String countDrv = updateAnnEvent.countOfDrivers;
+        String countPas = updateAnnEvent.countOfPassengers;
+
+        if(imageName.isEmpty() && tmpText.isEmpty() && countDrv.isEmpty() && countPas.isEmpty()) {
+            relativeLayoutAds.setVisibility(View.GONE);
+        } else {
+            if(imageName.isEmpty()) {
+                networkivAds.setVisibility(View.INVISIBLE);
+            } else {
+                //networkivAds = (NetworkImageView) findViewById(R.id.networkivAds);
+                networkivAds.setVisibility(View.VISIBLE);
+                {
+                    //final String IMAGE_URL = "http://developer.android.com/images/training/system-ui.png";
+                    ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
+                    String tmp = Constants.URL_ads + imageName;
+                    networkivAds.setImageUrl(tmp, mImageLoader);
+                }
+            }
+            if(tmpText.isEmpty() && countDrv.isEmpty() && countPas.isEmpty()) {
+                textviewAds.setVisibility(View.GONE);
+            } else {
+                String s =  tmpText.replaceAll("\\\\n", "\\\n");
+                String tmp="";
+                if(!(countDrv.isEmpty() && countPas.isEmpty()))  {
+                    tmp = String.format("Drivers:%s - Passengers:%s", countDrv, countPas);
+                    s += "\n" + tmp;
+                    textviewAds.setText(s);
+                }
+            }
+        }
+    }
+
+    @EventBusHook
     public void onEventMainThread(ServiceEvents.ErrorConnectionEvent erroConnectionEvent){
         tracer.debug("error getting state");
         btnPickDrop.setText(getResources().getString(R.string.gpsMainBtnReconnect));
         btnPickDrop.setVisibility(View.VISIBLE);
-        driverInfoLayout.setVisibility(View.GONE);
+        driverInfoLayout.setVisibility(View.INVISIBLE);
         pickdropState = 20;
     }
 
@@ -838,7 +897,7 @@ public class GpsMainActivity extends GenericViewFragment
             driverInfoLayout.setVisibility(View.VISIBLE);
         }else {//done
             btnPickDrop.setVisibility(View.VISIBLE);
-            driverInfoLayout.setVisibility(View.GONE);
+            driverInfoLayout.setVisibility(View.INVISIBLE);
         }
     }
 

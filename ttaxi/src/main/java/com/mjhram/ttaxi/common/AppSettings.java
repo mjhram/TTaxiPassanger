@@ -32,6 +32,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
 import com.mjhram.ttaxi.helper.Constants;
+import com.mjhram.ttaxi.helper.phpErrorMessages;
 import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.config.Configuration;
 
@@ -205,6 +206,13 @@ public class AppSettings extends Application {
         return instance;
     }
 
+    private static phpErrorMessages phpErrMsg;
+    public phpErrorMessages getPhpErrorMsg() {
+        if(phpErrMsg == null) {
+            phpErrMsg = new phpErrorMessages(getBaseContext());
+        }
+        return phpErrMsg;
+    }
 
     /**
      * The minimum seconds interval between logging points

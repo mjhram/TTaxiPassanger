@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="applanguage">ar</string>
+    <string name="Drivers">سيارات التاكسي</string>
+    <string name="Passengers">الركاب</string>
+
     <string name="pref_profile_title">معلومات  المستخدم</string>
     <string name="pref_profile_summary">تغيير معلومات المستخدم</string>
 

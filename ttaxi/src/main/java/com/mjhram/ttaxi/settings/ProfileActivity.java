@@ -26,6 +26,7 @@ import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
 import com.mjhram.ttaxi.helper.Constants;
 import com.mjhram.ttaxi.helper.UploadClass;
+import com.mjhram.ttaxi.helper.phpErrorMessages;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -218,7 +219,10 @@ public class ProfileActivity extends AppCompatActivity {
                     } else {
                         // Error occurred in registration. Get the error
                         // message
-                        String errorMsg = jObj.getString("error_msg");
+                        //String errorMsg = jObj.getString("error_msg");
+                        int errorno = jObj.getInt("error_no");
+                        phpErrorMessages phpErrorMsgs = AppSettings.getInstance().getPhpErrorMsg();
+                        String errorMsg = phpErrorMsgs.msgMap.get(errorno);
                         Toast.makeText(ProfileActivity.this,
                                 errorMsg, Toast.LENGTH_LONG).show();
                     }

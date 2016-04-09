@@ -854,7 +854,7 @@ public class GpsMainActivity extends GenericViewFragment
                 String s =  tmpText.replaceAll("\\\\n", "\\\n");
                 String tmp="";
                 if(!(countDrv.isEmpty() && countPas.isEmpty()))  {
-                    tmp = String.format("Drivers:%s - Passengers:%s", countDrv, countPas);
+                    tmp = String.format("%s:%s - %s:%s",getResources().getString(R.string.Drivers), countDrv, getResources().getString(R.string.Passengers), countPas);
                     s += "\n" + tmp;
                     textviewAds.setText(s);
                 }

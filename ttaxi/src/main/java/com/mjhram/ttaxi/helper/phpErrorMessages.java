@@ -53,23 +53,23 @@ public class phpErrorMessages {
             "Error Uploading Image"
     };*/
     private int msgno[] = {
-            //addTrequest://10-
+            //addTrequest://10- -UC#3
             10,11,12,
             //acceptTrequest://20-
             20,21,22,23,
-            //login_register://30-
+            //login_register://30- ok
             30,31,32,33,34,
             //logTaxiLoc
             40,41,
-            //updateRegId
+            //updateRegId->GpsMainActivity
             50,51,
             //updateTaxiLoc
             60,61,
             //updateTaxiLocation
             70, 71, 72, 73,
-            //updateTRequest
+            //updateTRequest-UC#2
             80,81,82,83,
-            //updateUserInfo
+            //updateUserInfo-UC#1
             90,91,
             //uploadImage
             100,101

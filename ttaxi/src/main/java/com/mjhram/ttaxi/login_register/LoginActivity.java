@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        phpErrorMsgs = new phpErrorMessages(this);
+        phpErrorMsgs = AppSettings.getInstance().getPhpErrorMsg();
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnLogin);

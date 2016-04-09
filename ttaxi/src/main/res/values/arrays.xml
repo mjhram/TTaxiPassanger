@@ -34,6 +34,9 @@
         <item> "User already existed"</item>
         <item> "Error occured in Registartion"</item>
         <item> "Unknow 'tag' value"</item>
+        <item> "Email is used"</item>
+        <item> "Name is used"</item>
+        <item> "Name and Email are used"</item>
         <!-- logTaxiLoc: 40- -->
         <item> "no error. location updated successfully"</item>
         <item> "no error. location inserted successfully"</item>

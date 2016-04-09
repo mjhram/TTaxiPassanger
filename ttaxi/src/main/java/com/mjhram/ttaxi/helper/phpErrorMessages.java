@@ -58,7 +58,7 @@ public class phpErrorMessages {
             //acceptTrequest://20-
             20,21,22,23,
             //login_register://30- ok
-            30,31,32,33,34,
+            30,31,32,33,34, 35,36,37,
             //logTaxiLoc
             40,41,
             //updateRegId->GpsMainActivity

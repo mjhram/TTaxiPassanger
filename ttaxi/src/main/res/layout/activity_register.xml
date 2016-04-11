@@ -14,21 +14,41 @@
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp" >
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
-            android:hint="@string/hint_name"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:inputType="textCapWords"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:orientation="horizontal">
 
-        <EditText
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/asterisk"/>
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/input_register_bg"
+                android:hint="@string/hint_nickname"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:inputType="textCapWords"
+                android:textColor="@color/input_register"
+                android:textColorHint="@color/input_register_hint" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/asterisk"/>
+            <EditText
             android:id="@+id/email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -40,6 +60,7 @@
             android:singleLine="true"
             android:textColor="@color/input_register"
             android:textColorHint="@color/input_register_hint" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/user_phone"
@@ -52,21 +73,31 @@
             android:singleLine="true"
             android:inputType="phone"
             android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:textColorHint="@color/input_register_hint"
+            android:layout_marginLeft="15dp"/>
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/asterisk"/>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/input_register_bg"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_register"
+                android:textColorHint="@color/input_register_hint" />
+        </LinearLayout>
         <!-- Login Button -->
 
         <Button
@@ -76,7 +107,9 @@
             android:layout_marginTop="20dip"
             android:background="#ea4c88"
             android:text="@string/btn_register"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_marginLeft="15dp"
+            />
 
         <!-- Link to Login Screen -->
 

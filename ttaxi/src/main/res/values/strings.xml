@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><![CDATA[
-
-
-        ]]>
-    <string name="hint_email">Email</string>
-        
-    <string name="hint_password">Password</string>
-        
+<resources>
+    <string name="hint_email">Email*</string>
+    <string name="hint_password">Password*</string>
     <string name="hint_name">Fullname</string>
+    <string name="hint_nickname">Name*</string>
     <string name="hint_phone">Phone</string>
-        
-    <string name="btn_login">LOGIN</string>
-        
-    <string name="btn_register">REGISTER</string>
-        
-    <string name="btn_link_to_register">Not a member? Sign up now.</string>
-        <string name="btn_link_to_login">Already registred! Login Me.</string><![CDATA[
-    
-    
-    
 
-    ]]>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

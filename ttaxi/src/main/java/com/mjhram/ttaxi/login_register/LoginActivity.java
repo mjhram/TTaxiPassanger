@@ -46,7 +46,7 @@ public class LoginActivity extends Activity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private Button btnLogin;
     private Button btnLinkToRegister;
-    private EditText inputEmail;
+    private EditText inputName;
     private EditText inputPassword;
     private ProgressDialog pDialog;
     //private SessionManager session;
@@ -59,7 +59,7 @@ public class LoginActivity extends Activity {
     private void setButtons(boolean enabled) {
         btnLogin.setEnabled(enabled);
         btnLinkToRegister.setEnabled(enabled);
-        inputEmail.setEnabled(enabled);
+        inputName.setEnabled(enabled);
         inputPassword.setEnabled(enabled);
     }
 
@@ -69,7 +69,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         phpErrorMsgs = AppSettings.getInstance().getPhpErrorMsg();
-        inputEmail = (EditText) findViewById(R.id.email);
+        inputName = (EditText) findViewById(R.id.name);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
@@ -116,7 +116,7 @@ public class LoginActivity extends Activity {
         // Login button Click Event
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String email = inputEmail.getText().toString();
+                String name = inputName.getText().toString();
                 String password = inputPassword.getText().toString();
                 //check for regId
                 if(AppSettings.regId==null) {
@@ -126,9 +126,9 @@ public class LoginActivity extends Activity {
                     finish();
                 }
                 // Check for empty data in the form
-                if (email.trim().length() > 0 && password.trim().length() > 0) {
+                if (name.trim().length() > 0 && password.trim().length() > 0) {
                     // login user
-                    checkLogin(email, password);
+                    checkLogin(name, password);
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -165,7 +165,7 @@ public class LoginActivity extends Activity {
     /**
      * function to verify login details in mysql db
      * */
-     private void checkLogin(final String email, final String password) {
+     private void checkLogin(final String name, final String password) {
      // Tag used to cancel the request
      String tag_string_req = "req_login";
 
@@ -238,7 +238,7 @@ public class LoginActivity extends Activity {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("tag", "login");
-                params.put("email", email);
+                params.put("name", name);
                 params.put("password", password);
                 params.put("regId", AppSettings.regId);
                 return params;

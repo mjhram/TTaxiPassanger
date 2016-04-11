@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -174,6 +175,7 @@ public class RegisterActivity extends Activity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -197,6 +199,8 @@ public class RegisterActivity extends Activity {
                     params.put("password", password);
                     params.put("regId", AppSettings.regId);
                     params.put("type", "Pas");
+                    String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                    params.put("androidid", androidId);
                     return params;
                 }
             };

@@ -30,7 +30,7 @@
         <item> "Request couldn't be updated"</item>
         <!-- login_register: 30- -->
         <item> "successfull"</item>
-        <item> "Incorrect email or password!"</item>
+        <item> "Incorrect name or password!"</item>
         <item> "User already existed"</item>
         <item> "Error occured in Registartion"</item>
         <item> "Unknow 'tag' value"</item>

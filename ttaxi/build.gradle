@@ -13,6 +13,14 @@ plugins {
     id "com.mendhak.gradlecrowdin" version "0.0.5"
 }
 
+//Load API Key information in from property file
+Properties props = new Properties()
+try {
+    props.load(file('fabric.properties').newDataInputStream())
+} catch (Exception ex) {
+    throw new GradleException("Missing fabric.properties, check the fabric.properties.sample file.");
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 

@@ -148,10 +148,6 @@
             </intent-filter>
         </receiver>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="67e5e650c7c58856fafeae0a91405d1791287654" />
-
         <activity
             android:name=".settings.ProfileActivity"
             android:label="@string/title_activity_profile"

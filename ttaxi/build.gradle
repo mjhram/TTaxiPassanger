@@ -210,7 +210,7 @@ if (project.hasProperty("CROWDIN_API_KEY")) {
     crowdinDownload {
         apiKey = CROWDIN_API_KEY
         destination = "$projectDir/src/main/res"
-        projectId = 'gpslogger-for-android'
+        projectId = 'ttaxi-for-android'
 
         //Android projects
         renameMapping = [

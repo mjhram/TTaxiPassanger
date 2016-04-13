@@ -14,7 +14,7 @@
   <string name="navigation_drawer_open">فتح درج الملاحة</string>
   <string name="navigation_drawer_close">إغلاق درج الملاحة</string>
   <string name="app_name">TTaxiPassenger</string>
-  <string name="settings_screen_name">إعدادات GPSLogger </string>
+  <string name="settings_screen_name">الإعدادات</string>
   <string name="ok">موافق</string>
   <string name="cancel">إلغاء الأمر</string>
   <string name="menu_exit">خروج</string>

@@ -42,6 +42,30 @@ public class ProfileActivity extends AppCompatActivity {
     private NetworkImageView networkImageViewUser;
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        savedInstanceState.putString("USER_NAME", edit_username.getText().toString());
+        savedInstanceState.putString("EMAIL", edit_email.getText().toString());
+        String tmp = edit_phone.getText().toString();
+        savedInstanceState.putString("PHONE", tmp);
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+        String tmp;
+        tmp = savedInstanceState.getString("USER_NAME");
+        edit_username.setText(tmp);
+        tmp = savedInstanceState.getString("EMAIL");
+        edit_email.setText(tmp);
+        tmp = savedInstanceState.getString("PHONE");
+        edit_phone.setText(tmp);
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
@@ -79,11 +103,6 @@ public class ProfileActivity extends AppCompatActivity {
                 showFileChooser();
             }
         });*/
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         edit_username.setText(AppSettings.getName());
         edit_email.setText(AppSettings.getEmail());
         edit_phone.setText(AppSettings.getPhone());
@@ -92,11 +111,6 @@ public class ProfileActivity extends AppCompatActivity {
             ImageLoader mImageLoader = AppSettings.getInstance().getImageLoader();
             networkImageViewUser.setImageUrl(Constants.URL_downloadUserPhoto+AppSettings.getPhotoId(), mImageLoader);
         }
-        /*String tmp = AppSettings.getPhoto();
-        if(!tmp.isEmpty()) {
-            Bitmap bitmap = getImageFromString(tmp);
-            photoImageView.setImageBitmap(bitmap);
-        }*/
     }
 
     private String getStringImage(Bitmap bmp){

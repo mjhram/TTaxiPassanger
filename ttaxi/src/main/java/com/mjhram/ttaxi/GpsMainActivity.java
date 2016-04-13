@@ -1201,8 +1201,8 @@ public class GpsMainActivity extends GenericViewFragment
             public void onTick(long millisUntilFinished) {
                 long minutes = (millisUntilFinished) / (60*1000);
                 long seconds = (millisUntilFinished/1000) % 60;
-                String timeString = String.format("%02d:%02d", minutes, seconds);
-                btnPickDrop.setText(getString(R.string.gpsMainBtnCancel)+timeString);
+                //String timeString = String.format("%02d:%02d", minutes, seconds);
+                btnPickDrop.setText(getString(R.string.gpsMainBtnCancel,minutes, seconds));
             }
             public void onFinish() {
                 //cancel the T-request

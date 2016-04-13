@@ -22,7 +22,7 @@
 
     <string name="gpsMainBtnReconnect">اعادة ربط</string>
     <string name="gpsMainMsgRequestCanceled">تم الغاء الطلب</string>
-    <string name="gpsMainBtnCancel">الغاء:</string>
+    <string name="gpsMainBtnCancel">الغاء:%1$d:%2$02d</string>
     <string name="gpsMainBtnDropto">الوصول الى</string>
     <string name="gpsMainBtnConfirm">تأكيد...</string>
     <string name="gpsMainBtnPickFrom">اركب من...</string>
@@ -49,7 +49,7 @@
 
     <!-- gcm_client/MyGcmListenerService -->
     <string name="gcmClientReqState">حالة الطلب:</string>
-    <string name="gcmClientGcmMsg"></string>
+    <string name="gcmClientGcmMsg">TTaxi Passenger</string>
 
     <string name="appAbout">TTaxiDriver الاصدار:</string>
     <string name="str_default">افتراضي</string>

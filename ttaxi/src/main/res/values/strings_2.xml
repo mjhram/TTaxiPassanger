@@ -21,7 +21,7 @@
 
     <string name="gpsMainBtnReconnect">Re-Connect</string>
     <string name="gpsMainMsgRequestCanceled">Request Canceled</string>
-    <string name="gpsMainBtnCancel">Cancel:</string>
+    <string name="gpsMainBtnCancel">Cancel:%1$d:%2$02d</string>
     <string name="gpsMainBtnDropto">Drop to...</string>
     <string name="gpsMainBtnConfirm">Confirm...</string>
     <string name="gpsMainBtnPickFrom">Pick From...</string>
@@ -48,7 +48,7 @@
 
     <!-- gcm_client/MyGcmListenerService -->
     <string name="gcmClientReqState">Request State:</string>
-    <string name="gcmClientGcmMsg">GCM Message</string>
+    <string name="gcmClientGcmMsg">TTaxi Passenger</string>
 
 
     <string name="appAbout">TTaxiPassenger Version: </string>

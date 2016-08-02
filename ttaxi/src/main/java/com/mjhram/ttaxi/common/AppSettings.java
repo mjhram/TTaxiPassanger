@@ -61,7 +61,7 @@ public class AppSettings extends Application {
     public static boolean firstZooming = true;
     public static int requestId = -1;
 
-     public static boolean shouldUploadRegId = false;
+    public static boolean shouldUploadRegId = false;
     public static boolean online = false;
 
     @Override

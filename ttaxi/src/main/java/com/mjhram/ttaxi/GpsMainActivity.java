@@ -119,6 +119,8 @@ public class GpsMainActivity extends GenericViewFragment
     private static int pickdropState = 0;//1=pick, 2=drop,
     //public static android.support.v4.app.FragmentManager fragmentManager;
     private GoogleMap googleMap;
+    private  int    countOfDrivers=0;
+    private Marker[] nearbyDrivers;
 
     //private ActionProcessButton actionButton;
     private GoogleApiClient mGoogleApiClient;
@@ -219,6 +221,20 @@ public class GpsMainActivity extends GenericViewFragment
     public void onMapReady(GoogleMap map) {
         map.setMyLocationEnabled(true);
         googleMap = map;
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                                            @Override
+                                            public void onMapClick(LatLng point) {
+                                                Log.d("Map","Map clicked");
+                                                Location location = LocationServices.FusedLocationApi.getLastLocation(
+                                                        mGoogleApiClient);
+                                                if(location != null) {
+                                                    UploadClass uc = new UploadClass(GpsMainActivity.this);
+                                                    uc.getNearbyDrivers(location.getLatitude(), location.getLongitude());
+                                                }
+                                            }
+                                        }
+
+        );
         //map.setOnMyLocationButtonClickListener(this);
         /*Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (location != null)
@@ -807,6 +823,32 @@ public class GpsMainActivity extends GenericViewFragment
         googleMap.animateCamera(cu);
     }
 
+
+    @EventBusHook
+    public void onEventMainThread(ServiceEvents.updateDrivers updateDriversEvent){
+        tracer.debug("updating nearby driver");
+        double[] drvLat = updateDriversEvent.drvLat;
+        double[] drvLong = updateDriversEvent.drvLong;
+        //1. remove previous markers
+        for(int i=0; i<countOfDrivers;i++) {
+            nearbyDrivers[i].remove();
+        }
+        nearbyDrivers = null;
+        //2. add new markers
+        countOfDrivers = updateDriversEvent.drvCount;
+        nearbyDrivers = new Marker[countOfDrivers];
+        for(int i=0; i<updateDriversEvent.drvCount;i++) {
+            LatLng driverPosition = new LatLng(drvLat[i], drvLong[i]);
+            MarkerOptions markerOptions = new MarkerOptions()
+                    .position(driverPosition)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.taxi))
+                    .anchor(0.5f, 0.5f)
+                    .draggable(true);
+            ;
+            nearbyDrivers[i] = googleMap.addMarker(markerOptions);
+        }
+    }
+
     @EventBusHook
     public void onEventMainThread(ServiceEvents.DriverLocationUpdate driverLocationUpdate){
         tracer.debug("driver location update");
@@ -1052,8 +1094,8 @@ public class GpsMainActivity extends GenericViewFragment
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(location.getLatitude(), location.getLongitude()), 13));
             AppSettings.firstZooming = false;
-            LocationServices.FusedLocationApi.removeLocationUpdates(
-                    mGoogleApiClient, this);
+            /*LocationServices.FusedLocationApi.removeLocationUpdates(
+                    mGoogleApiClient, this);*/
         }
     }
 

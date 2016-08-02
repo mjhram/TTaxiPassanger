@@ -15,6 +15,7 @@ import com.mjhram.ttaxi.common.DriverInfo;
 import com.mjhram.ttaxi.common.TRequestObj;
 import com.mjhram.ttaxi.common.events.ServiceEvents;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -349,6 +350,72 @@ public class UploadClass {
         // Adding request to request queue
         AppSettings ac = AppSettings.getInstance();
                 ac.addToRequestQueue(strReq, tag_string_req);
+    }
+
+    public void getNearbyDrivers(final double lat, final double lng) {
+        // Tag used to cancel the request
+        String tag_string_req = "getNearbyDrivers";
+
+        pDialog.setMessage(cx.getString(R.string.uploadDlgMsgUpdatingRqst));
+        showDialog();
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                Constants.URL_getDrivers, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "getDrivers Response: " + response);
+                hideDialog();
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        JSONArray requests = jObj.getJSONArray("results");
+                        double  drvLat[], drvLong[];
+                        int     drvCount = requests.length();
+                        drvLat = new double[drvCount];
+                        drvLong = new double[drvCount];
+
+                        for(int i=0;i<drvCount;i++){
+                            JSONObject c = requests.getJSONObject(i);
+                            drvLat[i] = c.getDouble("lat");
+                            drvLong[i] = c.getDouble("long");
+                        }
+                        hideDialog();
+                        EventBus.getDefault().post(new ServiceEvents.updateDrivers(drvCount, drvLat, drvLong));
+                    } else {
+                        Toast.makeText(cx, cx.getString(R.string.str_noDrivers)
+                                , Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "getDrivers Error: " + error.getMessage());
+                Toast.makeText(cx,
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("tag", "getDrivers");
+                params.put("pass_long", Double.toString(lng));
+                params.put("pass_lat", Double.toString(lat));
+
+                return params;
+            }
+        };
+        // Adding request to request queue
+        AppSettings ac = AppSettings.getInstance();
+        ac.addToRequestQueue(strReq, tag_string_req);
     }
 
     private void showDialog() {

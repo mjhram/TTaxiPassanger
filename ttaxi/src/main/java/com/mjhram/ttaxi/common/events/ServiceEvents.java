@@ -28,6 +28,17 @@ public class ServiceEvents {
         }
     }
 
+    public static class updateDrivers {
+        public double[] drvLong, drvLat;
+        public int drvCount;
+
+        public updateDrivers(int driversCount, double[] drvLatitude, double[] drvLongitude){
+            drvCount = driversCount;
+            drvLong = drvLongitude;
+            drvLat = drvLatitude;
+        }
+    }
+
     public static class UpdateStateEvent {
         public TRequestObj treqObj;
         public UpdateStateEvent(TRequestObj theTreqObj){

@@ -230,11 +230,13 @@ public class GpsMainActivity extends GenericViewFragment
                                             @Override
                                             public void onMapClick(LatLng point) {
                                                 Log.d("Map","Map clicked");
-                                                Location location = LocationServices.FusedLocationApi.getLastLocation(
-                                                        mGoogleApiClient);
-                                                if(location != null) {
-                                                    UploadClass uc = new UploadClass(GpsMainActivity.this);
-                                                    uc.getNearbyDrivers(location);
+                                                if(pickdropState==0) {
+                                                    Location location = LocationServices.FusedLocationApi.getLastLocation(
+                                                            mGoogleApiClient);
+                                                    if (location != null) {
+                                                        UploadClass uc = new UploadClass(GpsMainActivity.this);
+                                                        uc.getNearbyDrivers(location);
+                                                    }
                                                 }
                                             }
                                         }
@@ -828,6 +830,26 @@ public class GpsMainActivity extends GenericViewFragment
         googleMap.animateCamera(cu);
     }
 
+    private void clearDriversMarkers() {
+        if(nearbyDrivers != null) {
+            for (int i = 0; i < countOfDrivers; i++) {
+                nearbyDrivers[i].remove();
+            }
+            nearbyDrivers = null;
+        }
+
+        if(searchPolygon != null) {
+            searchPolygon.remove();
+            searchPolygon = null;
+        }
+
+        /*if(mapsSearchCircle != null) {
+            mapsSearchCircle.remove();
+            mapsSearchCircle = null;
+        }
+        */
+
+    }
 
     @EventBusHook
     public void onEventMainThread(ServiceEvents.updateDrivers updateDriversEvent){
@@ -842,21 +864,7 @@ public class GpsMainActivity extends GenericViewFragment
 
         //double radiusInMeters = Utilities.toRadiusMeters(new LatLng(0.0, 0.0), new LatLng(radius, radius));
         //1. remove previous markers
-        if(nearbyDrivers != null) {
-            for (int i = 0; i < countOfDrivers; i++) {
-                nearbyDrivers[i].remove();
-            }
-        }
-        if(searchPolygon != null) {
-            searchPolygon.remove();
-        }
-        searchPolygon = null;
-        /*if(mapsSearchCircle != null) {
-            mapsSearchCircle.remove();
-        }
-        mapsSearchCircle = null;*/
-
-        nearbyDrivers = null;
+        clearDriversMarkers();
         //2.a add scan circle
         int circleStrokeWidth = 3;
         int mStrokeColor = Color.BLACK;
@@ -1328,7 +1336,7 @@ public class GpsMainActivity extends GenericViewFragment
     public void onPickDropClick(View v) {
         UploadClass uc;
         switch(pickdropState) {
-            case 0:
+            case 0://0 is idle, change to 1=pickFrom is assigned
                 pickdropState = 1;
                 if (mGoogleApiClient.isConnected()) {
                     //Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -1360,7 +1368,7 @@ public class GpsMainActivity extends GenericViewFragment
                 btnPickDrop.setText(getString(R.string.gpsMainBtnDropto));
 
                 break;
-            case 1:
+            case 1: //1=pickFrom is assigned, change to 2=drpTo is assigned
                 pickdropState = 2;
                 if (mGoogleApiClient.isConnected()) {
                     //Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -1377,7 +1385,7 @@ public class GpsMainActivity extends GenericViewFragment
                 }
                 btnPickDrop.setText(getString(R.string.gpsMainBtnConfirm));
                 break;
-            case 2:
+            case 2://2=drpTo is assigned
                 //show dialog for additional info:
                 boolean wrapInScrollView = true;
                 MaterialDialog dialog = new MaterialDialog.Builder(this)
@@ -1399,6 +1407,7 @@ public class GpsMainActivity extends GenericViewFragment
                                 additionalNotes = editTextAdditionalNotes.getText().toString();
 
                                 pickdropState=3;
+                                clearDriversMarkers();
                                 startCounter(15*60);
                                 UploadClass upload = new UploadClass(GpsMainActivity.this);
                                 String lat1 = Double.toString(fromMarker.getPosition().latitude);

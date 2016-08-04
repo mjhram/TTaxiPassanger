@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.BatteryManager;
@@ -28,6 +29,7 @@ import android.os.Build;
 import android.provider.Settings;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.maps.model.LatLng;
 import com.mjhram.ttaxi.R;
 
 import org.slf4j.LoggerFactory;
@@ -35,9 +37,11 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -46,7 +50,36 @@ public class Utilities {
     private static MaterialDialog pd;
     private static org.slf4j.Logger tracer = LoggerFactory.getLogger(Utilities.class.getSimpleName());
 
+    public static double toRadiusMeters(LatLng center, LatLng radius) {
+        float[] result = new float[1];
+        Location.distanceBetween(center.latitude, center.longitude,
+                radius.latitude, radius.longitude, result);
+        return result[0];
+    }
 
+    public static List<LatLng> createRectangle(LatLng center, double halfWidth, double halfHeight) {
+        return Arrays.asList(new LatLng(center.latitude - halfHeight, center.longitude - halfWidth),
+                new LatLng(center.latitude - halfHeight, center.longitude + halfWidth),
+                new LatLng(center.latitude + halfHeight, center.longitude + halfWidth),
+                new LatLng(center.latitude + halfHeight, center.longitude - halfWidth),
+                new LatLng(center.latitude - halfHeight, center.longitude - halfWidth));
+    }
+
+    public static void showExitDialog(String msg, final Activity theActivity) {
+        MaterialDialog alertDialog = new MaterialDialog.Builder(theActivity.getBaseContext())
+                .title("TTaxi")
+                .content(msg)
+                .positiveText(R.string.ok)
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        theActivity.finish();
+                        return;
+                    }
+                })
+                .build();
+        alertDialog.show();
+    }
     /*public static void ConfigureLogbackDirectly(Context context) {
         try {
             // reset the default context (which may already have been initialized)

@@ -2,6 +2,7 @@ package com.mjhram.ttaxi.helper;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.location.Location;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -352,9 +353,12 @@ public class UploadClass {
                 ac.addToRequestQueue(strReq, tag_string_req);
     }
 
-    public void getNearbyDrivers(final double lat, final double lng) {
+    public void getNearbyDrivers(final Location loc) {
         // Tag used to cancel the request
         String tag_string_req = "getNearbyDrivers";
+        final double lat, lng;
+        lat = loc.getLatitude();
+        lng = loc.getLongitude();
 
         pDialog.setMessage(cx.getString(R.string.uploadDlgMsgUpdatingRqst));
         showDialog();
@@ -383,7 +387,10 @@ public class UploadClass {
                             drvLong[i] = c.getDouble("long");
                         }
                         hideDialog();
-                        EventBus.getDefault().post(new ServiceEvents.updateDrivers(drvCount, drvLat, drvLong));
+                        double lng_d = jObj.getDouble("lng_d");
+                        double lat_d = jObj.getDouble("lat_d");
+
+                        EventBus.getDefault().post(new ServiceEvents.updateDrivers(drvCount, drvLat, drvLong, lat_d, lng_d, loc));
                     } else {
                         Toast.makeText(cx, cx.getString(R.string.str_noDrivers)
                                 , Toast.LENGTH_LONG).show();

@@ -30,8 +30,9 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.mjhram.ttaxi.R;
 import com.mjhram.ttaxi.common.AppSettings;
-import com.mjhram.ttaxi.helper.Constants;
+import com.mjhram.ttaxi.common.Utilities;
 import com.mjhram.ttaxi.gcm_client.RegistrationIntentService;
+import com.mjhram.ttaxi.helper.Constants;
 import com.mjhram.ttaxi.helper.phpErrorMessages;
 import com.mjhram.ttaxi.login_register.app.AppConfig;
 
@@ -195,8 +196,16 @@ public class LoginActivity extends Activity {
                         String email = user.getString("email");
                         String imageId = user.getString("image_id");
                         String phone = user.getString("phone");
+                        int licenseState = user.getInt("licenseState");
                         //String created_at = user.getString("created_at");
-
+                        switch(licenseState) {
+                            case 1: //license expire
+                                Utilities.showExitDialog("Your license has been expired", LoginActivity.this);
+                                return;
+                            case 2: //other msg
+                                Utilities.showExitDialog("Some error happened prevent app from continue", LoginActivity.this);
+                                return;
+                        }
                         AppSettings.setLogin(true,name, email, uid);
                         AppSettings.setPhone(phone);
 

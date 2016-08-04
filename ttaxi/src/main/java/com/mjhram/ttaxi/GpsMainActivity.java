@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
@@ -76,6 +77,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.heinrichreimersoftware.materialdrawer.DrawerView;
 import com.heinrichreimersoftware.materialdrawer.structure.DrawerItem;
 import com.mjhram.ttaxi.Faq.Faqtivity;
@@ -120,7 +123,9 @@ public class GpsMainActivity extends GenericViewFragment
     //public static android.support.v4.app.FragmentManager fragmentManager;
     private GoogleMap googleMap;
     private  int    countOfDrivers=0;
-    private Marker[] nearbyDrivers;
+    private Marker[] nearbyDrivers = null;
+    //private Circle mapsSearchCircle = null;
+    private Polygon searchPolygon;
 
     //private ActionProcessButton actionButton;
     private GoogleApiClient mGoogleApiClient;
@@ -229,7 +234,7 @@ public class GpsMainActivity extends GenericViewFragment
                                                         mGoogleApiClient);
                                                 if(location != null) {
                                                     UploadClass uc = new UploadClass(GpsMainActivity.this);
-                                                    uc.getNearbyDrivers(location.getLatitude(), location.getLongitude());
+                                                    uc.getNearbyDrivers(location);
                                                 }
                                             }
                                         }
@@ -829,12 +834,50 @@ public class GpsMainActivity extends GenericViewFragment
         tracer.debug("updating nearby driver");
         double[] drvLat = updateDriversEvent.drvLat;
         double[] drvLong = updateDriversEvent.drvLong;
+        double lat_dw = updateDriversEvent.lat_d;
+        double lng_dw = updateDriversEvent.lng_d;
+
+        Location loc = updateDriversEvent.location;
+        LatLng center = new LatLng(loc.getLatitude(), loc.getLongitude());
+
+        //double radiusInMeters = Utilities.toRadiusMeters(new LatLng(0.0, 0.0), new LatLng(radius, radius));
         //1. remove previous markers
-        for(int i=0; i<countOfDrivers;i++) {
-            nearbyDrivers[i].remove();
+        if(nearbyDrivers != null) {
+            for (int i = 0; i < countOfDrivers; i++) {
+                nearbyDrivers[i].remove();
+            }
         }
+        if(searchPolygon != null) {
+            searchPolygon.remove();
+        }
+        searchPolygon = null;
+        /*if(mapsSearchCircle != null) {
+            mapsSearchCircle.remove();
+        }
+        mapsSearchCircle = null;*/
+
         nearbyDrivers = null;
-        //2. add new markers
+        //2.a add scan circle
+        int circleStrokeWidth = 3;
+        int mStrokeColor = Color.BLACK;
+        int mFillColor1 = 20;
+        int mAlpha = 20;
+        int mFillColor = Color.HSVToColor(
+                mAlpha, new float[] {mFillColor1, 1, 1});
+        /*CircleOptions opt = new CircleOptions()
+                .center(center)
+                .radius(radiusInMeters)
+                .strokeWidth(circleStrokeWidth)
+                .strokeColor(mStrokeColor)
+                .fillColor(mFillColor);
+        mapsSearchCircle = googleMap.addCircle(opt);*/
+        //Polygon [or rectangle]
+        PolygonOptions options = new PolygonOptions().addAll(Utilities.createRectangle(center, lat_dw, lng_dw));
+        searchPolygon = googleMap.addPolygon(options
+                .strokeWidth(circleStrokeWidth)
+                .strokeColor(Color.BLACK)
+                .fillColor(mFillColor));
+        //2.b add new markers
         countOfDrivers = updateDriversEvent.drvCount;
         nearbyDrivers = new Marker[countOfDrivers];
         for(int i=0; i<updateDriversEvent.drvCount;i++) {

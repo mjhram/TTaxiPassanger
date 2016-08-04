@@ -31,11 +31,16 @@ public class ServiceEvents {
     public static class updateDrivers {
         public double[] drvLong, drvLat;
         public int drvCount;
+        public double lat_d, lng_d;
+        public Location location;
 
-        public updateDrivers(int driversCount, double[] drvLatitude, double[] drvLongitude){
+        public updateDrivers(int driversCount, double[] drvLatitude, double[] drvLongitude, double lat_dw, double lng_dw, Location loc){
             drvCount = driversCount;
             drvLong = drvLongitude;
             drvLat = drvLatitude;
+            lat_d = lat_dw;
+            lng_d = lng_dw;
+            location = loc;
         }
     }
 
